@@ -287,28 +287,28 @@ export const SkillsLeetCodeSection = () => {
   ];
 
   return (
-    <section id="skills" className="py-24 sm:py-32 bg-white dark:bg-[#121311] transition-colors duration-300 relative z-20 border-t border-[#0e0f0c]/5 dark:border-white/5">
+    <section id="skills" className="py-14 sm:py-32 bg-white dark:bg-[#121311] transition-colors duration-300 relative z-20 border-t border-[#0e0f0c]/5 dark:border-white/5">
       <div className="max-w-[1400px] mx-auto px-6 lg:px-12">
-        
+
         {/* SKILLS SECTION */}
-        <div className="mb-24">
+        <div className="mb-12 sm:mb-24">
           <FadeIn>
-            <h2 className="text-4xl sm:text-5xl font-black tracking-tight text-[#0e0f0c] dark:text-white mb-10">
+            <h2 className="text-4xl sm:text-5xl font-black tracking-tight text-[#0e0f0c] dark:text-white mb-6 sm:mb-10">
               Skills
             </h2>
           </FadeIn>
-          
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-4 sm:gap-6">
             {skillCategories.map((category, idx) => (
               <FadeIn key={category.title} delay={idx * 0.1} y={20}>
-                <div className="h-full p-8 rounded-[24px] bg-[#e8ebe6] dark:bg-[#1a1b19] border border-[#0e0f0c]/5 dark:border-white/5 transition-all hover:border-[#0e0f0c]/10 dark:hover:border-white/10">
-                  <div className="flex items-center gap-3 mb-8">
+                <div className="h-full p-5 sm:p-8 rounded-[24px] bg-[#e8ebe6] dark:bg-[#1a1b19] border border-[#0e0f0c]/5 dark:border-white/5 transition-all hover:border-[#0e0f0c]/10 dark:hover:border-white/10">
+                  <div className="flex items-center gap-3 mb-5 sm:mb-8">
                     <div className="p-2 rounded-lg bg-white dark:bg-[#0e0f0c] text-[#454745] dark:text-[#a0a0a0] shadow-sm border border-[#0e0f0c]/5 dark:border-white/5">
                       {category.icon}
                     </div>
-                    <h3 className="text-[20px] font-bold text-[#0e0f0c] dark:text-white">{category.title}</h3>
+                    <h3 className="text-[18px] sm:text-[20px] font-bold text-[#0e0f0c] dark:text-white">{category.title}</h3>
                   </div>
-                  
+
                   <div className="flex flex-wrap gap-2.5">
                     {category.skills.map((skill) => (
                       <span key={skill} className="px-3.5 py-1.5 rounded-lg bg-[#0e0f0c]/5 dark:bg-white/5 border border-[#0e0f0c]/10 dark:border-white/10 text-[13px] font-mono text-[#454745] dark:text-[#a0a0a0]">
@@ -326,26 +326,26 @@ export const SkillsLeetCodeSection = () => {
         {(!loading && (!lcData || lcData.totalSolved === 0)) ? null : (
           <div>
             <FadeIn>
-              <h2 className="text-4xl sm:text-5xl font-black tracking-tight text-[#0e0f0c] dark:text-white mb-10">
+              <h2 className="text-4xl sm:text-5xl font-black tracking-tight text-[#0e0f0c] dark:text-white mb-6 sm:mb-10">
                 LeetCode
               </h2>
             </FadeIn>
-          
+
           {/* Main LeetCode Card (Total Solved & Rings) */}
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-6 mb-4 sm:mb-6">
             {/* Left Card */}
             <FadeIn delay={0.1} y={20}>
-              <div className="h-full p-10 sm:p-14 rounded-[24px] bg-[#e8ebe6] dark:bg-[#1a1b19] border border-[#0e0f0c]/5 dark:border-white/5 flex flex-col items-center justify-center relative transition-all hover:border-[#0e0f0c]/10 dark:hover:border-white/10">
-                <div className="text-center mb-10">
-                  <div className="text-7xl font-black text-[#0e0f0c] dark:text-white tracking-tighter">
+              <div className="h-full p-6 sm:p-14 rounded-[24px] bg-[#e8ebe6] dark:bg-[#1a1b19] border border-[#0e0f0c]/5 dark:border-white/5 flex flex-col items-center justify-center relative transition-all hover:border-[#0e0f0c]/10 dark:hover:border-white/10">
+                <div className="text-center mb-5 sm:mb-10">
+                  <div className="text-5xl sm:text-7xl font-black text-[#0e0f0c] dark:text-white tracking-tighter">
                     {loading ? "..." : lcData?.totalSolved || 0}
                   </div>
                   <div className="text-[15px] font-medium text-[#454745] dark:text-[#868685] mt-2">
                     Problems Solved
                   </div>
                 </div>
-                
-                <div className="flex w-full justify-center gap-12 sm:gap-20">
+
+                <div className="flex w-full justify-center gap-8 sm:gap-20">
                   <div className="text-center">
                     <div className="text-[13px] text-[#454745] dark:text-[#868685] mb-1">Acceptance</div>
                     <div className="text-xl font-bold text-[#0e0f0c] dark:text-white">
@@ -367,8 +367,8 @@ export const SkillsLeetCodeSection = () => {
 
             {/* Right Card */}
             <FadeIn delay={0.2} y={20}>
-              <div className="h-full p-10 sm:p-12 rounded-[24px] bg-[#e8ebe6] dark:bg-[#1a1b19] border border-[#0e0f0c]/5 dark:border-white/5 flex flex-col justify-between transition-all hover:border-[#0e0f0c]/10 dark:hover:border-white/10">
-                <div className="flex-grow flex items-center justify-center gap-6 sm:gap-10 py-4">
+              <div className="h-full p-6 sm:p-12 rounded-[24px] bg-[#e8ebe6] dark:bg-[#1a1b19] border border-[#0e0f0c]/5 dark:border-white/5 flex flex-col justify-between transition-all hover:border-[#0e0f0c]/10 dark:hover:border-white/10">
+                <div className="flex-grow flex items-center justify-center gap-4 sm:gap-10 py-4">
                   <CircularProgress
                     value={loading ? 0 : lcData?.easySolved || 0}
                     max={loading ? 1 : lcData?.totalEasy || 1}
@@ -405,12 +405,12 @@ export const SkillsLeetCodeSection = () => {
 
           {/* Contest Stats Card */}
           <FadeIn delay={0.3} y={20}>
-            <div className="w-full p-8 sm:p-10 rounded-[24px] bg-[#e8ebe6] dark:bg-[#1a1b19] border border-[#0e0f0c]/5 dark:border-white/5 transition-all hover:border-[#0e0f0c]/10 dark:hover:border-white/10">
-              <div className="grid grid-cols-1 lg:grid-cols-3 gap-12 lg:gap-8">
-                
+            <div className="w-full p-5 sm:p-10 rounded-[24px] bg-[#e8ebe6] dark:bg-[#1a1b19] border border-[#0e0f0c]/5 dark:border-white/5 transition-all hover:border-[#0e0f0c]/10 dark:hover:border-white/10">
+              <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 lg:gap-8">
+
                 {/* Contest Left side - Line Graph */}
                 <div className="lg:col-span-2 pr-0 lg:pr-8 border-r-0 lg:border-r border-[#0e0f0c]/5 dark:border-white/5 flex flex-col justify-between">
-                  <div className="flex flex-wrap gap-8 sm:gap-16">
+                  <div className="flex flex-wrap gap-6 sm:gap-16">
                     <div>
                       <div className="text-[13px] font-bold text-[#454745] dark:text-[#868685] mb-1">Contest Rating</div>
                       <div className="text-3xl font-black text-[#0e0f0c] dark:text-white">

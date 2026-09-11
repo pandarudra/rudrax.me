@@ -61,15 +61,15 @@ export const MarqueeSection = () => {
   const seamlessRow2 = [...row2, ...row2, ...row2];
 
   return (
-    <section ref={containerRef} className="py-24 overflow-hidden bg-background relative">
-      <div className="flex flex-col gap-6 w-full">
-        <motion.div style={{ x: x1 }} className="flex gap-6 w-max">
+    <section ref={containerRef} className="py-10 sm:py-24 overflow-hidden bg-background relative">
+      <div className="flex flex-col gap-3 sm:gap-6 w-full">
+        <motion.div style={{ x: x1 }} className="flex gap-3 sm:gap-6 w-max">
           {seamlessRow1.map((item, i) => (
             <TechItem key={`r1-${i}`} icon={item.icon} label={item.label} />
           ))}
         </motion.div>
         
-        <motion.div style={{ x: x2 }} className="flex gap-6 w-max">
+        <motion.div style={{ x: x2 }} className="flex gap-3 sm:gap-6 w-max">
           {seamlessRow2.map((item, i) => (
             <TechItem key={`r2-${i}`} icon={item.icon} label={item.label} />
           ))}

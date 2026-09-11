@@ -39,19 +39,19 @@ export const Footer = () => {
   };
 
   return (
-    <footer id="contact" className="relative z-20 bg-white dark:bg-[#0e0f0c] border-t border-black/5 dark:border-white/5 pt-28 pb-16 px-6 overflow-hidden rounded-t-[24px]">
-      <div className="max-w-6xl mx-auto grid grid-cols-1 lg:grid-cols-12 gap-16 relative z-10">
-        
+    <footer id="contact" className="relative z-20 bg-white dark:bg-[#0e0f0c] border-t border-black/5 dark:border-white/5 pt-14 sm:pt-28 pb-10 sm:pb-16 px-6 overflow-hidden rounded-t-[24px]">
+      <div className="max-w-6xl mx-auto grid grid-cols-1 lg:grid-cols-12 gap-10 sm:gap-16 relative z-10">
+
         {/* LEFT COLUMN: Contact Form (lg:col-span-7) */}
         <div className="lg:col-span-7">
           <FadeIn>
-            <div className="flex items-center gap-3 mb-6">
-              <h2 className="text-5xl sm:text-7xl font-black tracking-tight text-[#0e0f0c] dark:text-white">
+            <div className="flex items-center gap-3 mb-4 sm:mb-6">
+              <h2 className="text-4xl sm:text-7xl font-black tracking-tight text-[#0e0f0c] dark:text-white">
                 Let&apos;s Connect
               </h2>
             </div>
-            
-            <p className="text-[#454745] dark:text-[#868685] mb-10 max-w-lg text-lg sm:text-xl font-medium leading-relaxed">
+
+            <p className="text-[#454745] dark:text-[#868685] mb-6 sm:mb-10 max-w-lg text-base sm:text-xl font-medium leading-relaxed">
               I&apos;m always open to discussing full-stack engineering roles, open-source initiatives, or contract projects. Drop me a line!
             </p>
 
@@ -106,12 +106,12 @@ export const Footer = () => {
         </div>
 
         {/* RIGHT COLUMN: Socials & Dynamic Dock Theme (lg:col-span-5) */}
-        <div className="lg:col-span-5 flex flex-col justify-between h-full gap-16 lg:pl-8">
-          
+        <div className="lg:col-span-5 flex flex-col justify-between h-full gap-8 sm:gap-16 lg:pl-8">
+
           {/* Social Media Node Grid */}
           <FadeIn delay={0.2}>
-            <h3 className="text-[13px] font-bold mb-6 accent-text tracking-widest uppercase">{`// Socials`}</h3>
-            <div className="flex flex-wrap gap-4">
+            <h3 className="text-[13px] font-bold mb-4 sm:mb-6 accent-text tracking-widest uppercase">{`// Socials`}</h3>
+            <div className="flex flex-wrap gap-3 sm:gap-4">
               
               {/* GitHub Link */}
               <motion.a
@@ -119,7 +119,7 @@ export const Footer = () => {
                 href="https://github.com/pandarudra"
                 target="_blank"
                 rel="noreferrer"
-                className="p-5 rounded-[24px] bg-black/5 dark:bg-white/5 border border-black/10 dark:border-white/10 text-[#0e0f0c] dark:text-white hover:accent-bg hover:border-transparent transition-all duration-300 flex items-center justify-center"
+                className="p-4 sm:p-5 rounded-[24px] bg-black/5 dark:bg-white/5 border border-black/10 dark:border-white/10 text-[#0e0f0c] dark:text-white hover:accent-bg hover:border-transparent transition-all duration-300 flex items-center justify-center"
               >
                 <Github className="w-6 h-6" />
                 <span className="sr-only">GitHub</span>
@@ -131,7 +131,7 @@ export const Footer = () => {
                 href="https://www.linkedin.com/in/rudra826/"
                 target="_blank"
                 rel="noreferrer"
-                className="p-5 rounded-[24px] bg-black/5 dark:bg-white/5 border border-black/10 dark:border-white/10 text-[#0e0f0c] dark:text-white transition-all duration-300 flex items-center justify-center"
+                className="p-4 sm:p-5 rounded-[24px] bg-black/5 dark:bg-white/5 border border-black/10 dark:border-white/10 text-[#0e0f0c] dark:text-white transition-all duration-300 flex items-center justify-center"
               >
                 <Linkedin className="w-6 h-6" />
                 <span className="sr-only">LinkedIn</span>
@@ -141,7 +141,7 @@ export const Footer = () => {
               <motion.a
                 whileHover={{ y: -4 }}
                 href="mailto:rudrapanda8206@gmail.com"
-                className="p-5 rounded-[24px] bg-black/5 dark:bg-white/5 border border-black/10 dark:border-white/10 text-[#0e0f0c] dark:text-white transition-all duration-300 flex items-center justify-center"
+                className="p-4 sm:p-5 rounded-[24px] bg-black/5 dark:bg-white/5 border border-black/10 dark:border-white/10 text-[#0e0f0c] dark:text-white transition-all duration-300 flex items-center justify-center"
               >
                 <Mail className="w-6 h-6" />
                 <span className="sr-only">Email</span>
@@ -154,7 +154,7 @@ export const Footer = () => {
                 href="https://x.com/rudra_826"
                 target="_blank"
                 rel="noreferrer"
-                className="p-5 rounded-[24px] bg-black/5 dark:bg-white/5 border border-black/10 dark:border-white/10 text-[#0e0f0c] dark:text-white transition-all duration-300 flex items-center justify-center"
+                className="p-4 sm:p-5 rounded-[24px] bg-black/5 dark:bg-white/5 border border-black/10 dark:border-white/10 text-[#0e0f0c] dark:text-white transition-all duration-300 flex items-center justify-center"
               >
                 <Twitter className="w-6 h-6" />
                 <span className="sr-only">X</span>
@@ -199,7 +199,7 @@ export const Footer = () => {
           </FadeIn>
 
           {/* Copy block */}
-          <div className="mt-16 pt-8 border-t border-black/10 dark:border-white/10 text-[#454745] dark:text-[#868685] text-sm flex flex-col sm:flex-row justify-between gap-4 w-full font-medium">
+          <div className="mt-8 sm:mt-16 pt-6 sm:pt-8 border-t border-black/10 dark:border-white/10 text-[#454745] dark:text-[#868685] text-sm flex flex-col sm:flex-row justify-between gap-4 w-full font-medium">
             <span>© {new Date().getFullYear()} Rudramadhab Panda. All rights reserved.</span>
           </div>
         </div>

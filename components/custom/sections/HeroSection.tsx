@@ -238,14 +238,14 @@ export const HeroSection = () => {
   return (
     <section
       id="hero"
-      className="relative w-full min-h-screen flex flex-col justify-center pt-24 pb-16 sm:pt-32 sm:pb-24 overflow-hidden bg-[#e8ebe6] dark:bg-[#0e0f0c] transition-colors duration-300"
+      className="relative w-full min-h-screen flex flex-col justify-center pt-24 pb-10 sm:pt-32 sm:pb-24 overflow-hidden bg-[#e8ebe6] dark:bg-[#0e0f0c] transition-colors duration-300"
     >
       <div className="relative z-10 w-full px-6 md:px-12">
-        <div className="mx-auto grid w-full max-w-7xl items-center gap-16 lg:grid-cols-[1.15fr_0.85fr]">
+        <div className="mx-auto grid w-full max-w-7xl items-center gap-8 sm:gap-16 lg:grid-cols-[1.15fr_0.85fr]">
           <div className="text-center lg:text-left flex flex-col justify-center">
-            
+
             <FadeIn y={18} delay={0.08}>
-              <h1 className="text-6xl sm:text-7xl md:text-[100px] lg:text-[120px] font-black leading-[0.85] tracking-tight mb-8 text-[#0e0f0c] dark:text-white font-sans">
+              <h1 className="text-5xl sm:text-7xl md:text-[100px] lg:text-[120px] font-black leading-[0.85] tracking-tight mb-5 sm:mb-8 text-[#0e0f0c] dark:text-white font-sans">
                 Hi, I’m{" "}
                 <span className="accent-text">
                   Rudra.
@@ -254,17 +254,17 @@ export const HeroSection = () => {
             </FadeIn>
 
             <FadeIn y={14} delay={0.18}>
-              <p className="text-xl sm:text-2xl text-[#454745] dark:text-[#868685] font-medium max-w-2xl mx-auto lg:mx-0 mb-10 leading-relaxed tracking-tight">
+              <p className="text-lg sm:text-2xl text-[#454745] dark:text-[#868685] font-medium max-w-2xl mx-auto lg:mx-0 mb-6 sm:mb-10 leading-relaxed tracking-tight">
                I build digital experiences that don't just work, they resonate. From lightning-fast interfaces to battle-tested backend systems, I create products that are elegant, scalable, and impossible to ignore.    </p>
             </FadeIn>
 
             <FadeIn
               y={8}
               delay={0.26}
-              className="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-4 sm:gap-5 flex-wrap"
+              className="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-3 sm:gap-5 flex-wrap"
             >
               <a href="mailto:rudrapanda8206@gmail.com" className="w-full sm:w-auto">
-                <button className="w-full sm:w-auto group inline-flex h-14 items-center justify-center gap-2 rounded-[24px] accent-bg px-8 text-[16px] font-bold transition-all hover:scale-105 active:scale-95 shadow-lg">
+                <button className="w-full sm:w-auto group inline-flex h-12 sm:h-14 items-center justify-center gap-2 rounded-[24px] accent-bg px-8 text-[15px] sm:text-[16px] font-bold transition-all hover:scale-105 active:scale-95 shadow-lg">
                   Get In Touch
                 </button>
               </a>
@@ -272,10 +272,10 @@ export const HeroSection = () => {
                 href="#projects"
                 onClick={(e) => {
                   e.preventDefault();
-               
+
                   router.push("/blog");
                 }}
-                className="w-full sm:w-auto group inline-flex h-14 items-center justify-center gap-2 rounded-[24px] border-2 border-[#0e0f0c] dark:border-white bg-transparent px-8 text-[16px] font-bold text-[#0e0f0c] dark:text-white transition-all hover:bg-[#0e0f0c] hover:text-white dark:hover:bg-white dark:hover:text-[#0e0f0c] hover:scale-105 active:scale-95 cursor-pointer"
+                className="w-full sm:w-auto group inline-flex h-12 sm:h-14 items-center justify-center gap-2 rounded-[24px] border-2 border-[#0e0f0c] dark:border-white bg-transparent px-8 text-[15px] sm:text-[16px] font-bold text-[#0e0f0c] dark:text-white transition-all hover:bg-[#0e0f0c] hover:text-white dark:hover:bg-white dark:hover:text-[#0e0f0c] hover:scale-105 active:scale-95 cursor-pointer"
               >
                 Explore Blogs
                 <ArrowRight className="size-5 transition-transform group-hover:translate-x-1" />
@@ -284,7 +284,7 @@ export const HeroSection = () => {
               <button
                 type="button"
                 onClick={() => setResumeOpen(true)}
-                className="w-full sm:w-auto group inline-flex h-14 items-center justify-center gap-2 rounded-[24px] border-2 border-[#0e0f0c] dark:border-white bg-transparent px-8 text-[16px] font-bold text-[#0e0f0c] dark:text-white transition-all hover:bg-[#0e0f0c] hover:text-white dark:hover:bg-white dark:hover:text-[#0e0f0c] hover:scale-105 active:scale-95 cursor-pointer"
+                className="w-full sm:w-auto group inline-flex h-12 sm:h-14 items-center justify-center gap-2 rounded-[24px] border-2 border-[#0e0f0c] dark:border-white bg-transparent px-8 text-[15px] sm:text-[16px] font-bold text-[#0e0f0c] dark:text-white transition-all hover:bg-[#0e0f0c] hover:text-white dark:hover:bg-white dark:hover:text-[#0e0f0c] hover:scale-105 active:scale-95 cursor-pointer"
               >
                 Resume
                 <FileText className="size-5" />

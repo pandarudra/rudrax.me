@@ -37,14 +37,14 @@ const StaticCard = ({ cert }: { cert: CertificateData }) => {
   const iconColor = getIconClass(cert.iconColor);
 
   return (
-    <div className={`flex-shrink-0 w-[300px] sm:w-[360px] h-[240px] p-8 rounded-[24px] border ${bgClass} flex flex-col justify-between items-start transition-all duration-300 hover:border-[#0e0f0c]/20 dark:hover:border-white/20`}>
+    <div className={`flex-shrink-0 w-65 sm:w-[360px] h-52.5 sm:h-60 p-5 sm:p-8 rounded-[24px] border ${bgClass} flex flex-col justify-between items-start transition-all duration-300 hover:border-[#0e0f0c]/20 dark:hover:border-white/20`}>
       <div className="w-full">
         {cert.image_url ? (
-          <div className="w-12 h-12 mb-6 rounded-full overflow-hidden bg-white/50 dark:bg-black/50 p-1">
+          <div className="w-10 h-10 sm:w-12 sm:h-12 mb-4 sm:mb-6 rounded-full overflow-hidden bg-white/50 dark:bg-black/50 p-1">
             <img src={cert.image_url} alt={cert.title} className="w-full h-full object-contain" />
           </div>
         ) : (
-          <div className={`p-3 rounded-[14px] bg-white dark:bg-[#0a0a0a] w-fit mb-6 shadow-sm border border-[#0e0f0c]/5 dark:border-white/5`}>
+          <div className={`p-3 rounded-[14px] bg-white dark:bg-[#0a0a0a] w-fit mb-4 sm:mb-6 shadow-sm border border-[#0e0f0c]/5 dark:border-white/5`}>
             <Award className={`w-5 h-5 ${iconColor}`} />
           </div>
         )}
@@ -126,25 +126,25 @@ export const CertificatesSection = () => {
   };
 
   return (
-    <section id="certificates" className="py-24 sm:py-32 bg-[#e8ebe6] dark:bg-[#0e0f0c] transition-colors duration-300 relative z-20 border-t border-[#0e0f0c]/5 dark:border-white/5 overflow-hidden">
+    <section id="certificates" className="py-14 sm:py-32 bg-[#e8ebe6] dark:bg-[#0e0f0c] transition-colors duration-300 relative z-20 border-t border-[#0e0f0c]/5 dark:border-white/5 overflow-hidden">
       <div className="max-w-[1400px] mx-auto">
         <FadeIn>
-          <div className="flex items-center justify-between px-6 lg:px-12 mb-12">
+          <div className="flex items-center justify-between px-6 lg:px-12 mb-6 sm:mb-12">
             <h2 className="text-4xl sm:text-5xl font-black tracking-tight text-[#0e0f0c] dark:text-white">
               Certificates
             </h2>
-            
+
             <div className="flex items-center gap-3">
-              <button 
+              <button
                 onClick={() => scroll('left')}
-                className="size-10 rounded-full border border-[#0e0f0c]/10 dark:border-white/10 flex items-center justify-center text-[#0e0f0c] dark:text-white hover:bg-black/5 dark:hover:bg-white/5 transition-colors active:scale-95"
+                className="size-9 sm:size-10 rounded-full border border-[#0e0f0c]/10 dark:border-white/10 flex items-center justify-center text-[#0e0f0c] dark:text-white hover:bg-black/5 dark:hover:bg-white/5 transition-colors active:scale-95"
                 aria-label="Scroll left"
               >
                 <ChevronLeft className="size-5" />
               </button>
-              <button 
+              <button
                 onClick={() => scroll('right')}
-                className="size-10 rounded-full border border-[#0e0f0c]/10 dark:border-white/10 flex items-center justify-center text-[#0e0f0c] dark:text-white hover:bg-black/5 dark:hover:bg-white/5 transition-colors active:scale-95"
+                className="size-9 sm:size-10 rounded-full border border-[#0e0f0c]/10 dark:border-white/10 flex items-center justify-center text-[#0e0f0c] dark:text-white hover:bg-black/5 dark:hover:bg-white/5 transition-colors active:scale-95"
                 aria-label="Scroll right"
               >
                 <ChevronRight className="size-5" />
@@ -154,9 +154,9 @@ export const CertificatesSection = () => {
         </FadeIn>
 
         <div className="relative w-full pl-6 lg:pl-12">
-          <div 
+          <div
             ref={scrollRef}
-            className="flex gap-6 overflow-x-auto snap-x snap-mandatory pb-8 pr-6 [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none]"
+            className="flex gap-4 sm:gap-6 overflow-x-auto snap-x snap-mandatory pb-8 pr-6 [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none]"
           >
             {allCertificates.map((cert) => (
               <div key={cert.title} className="snap-start">

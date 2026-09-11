@@ -15,11 +15,11 @@ export const ProjectsSection = () => {
   return (
     <section
       id="projects"
-      className="bg-[#e8ebe6] dark:bg-[#0e0f0c] py-24 sm:py-32 px-6 border-t border-[#0e0f0c]/5 dark:border-white/5 transition-colors duration-300"
+      className="bg-[#e8ebe6] dark:bg-[#0e0f0c] py-14 sm:py-32 px-6 border-t border-[#0e0f0c]/5 dark:border-white/5 transition-colors duration-300"
     >
       <div className="max-w-5xl mx-auto">
         <FadeIn>
-          <h2 className="text-4xl sm:text-6xl font-black tracking-tight text-[#0e0f0c] dark:text-white mb-10">
+          <h2 className="text-4xl sm:text-6xl font-black tracking-tight text-[#0e0f0c] dark:text-white mb-6 sm:mb-10">
             Projects
           </h2>
         </FadeIn>
@@ -69,11 +69,11 @@ export const ProjectsSection = () => {
                     <p className="font-mono text-[11px] uppercase tracking-widest accent-text mb-2">
                       {project.category}
                     </p>
-                    <h3 className="text-2xl sm:text-3xl font-black text-[#0e0f0c] dark:text-white mb-5">
+                    <h3 className="text-2xl sm:text-3xl font-black text-[#0e0f0c] dark:text-white mb-3 sm:mb-5">
                       {project.name}
                     </h3>
 
-                    <div className="rounded-2xl overflow-hidden border border-[#0e0f0c]/10 dark:border-white/10 mb-6 aspect-video bg-[#e8ebe6] dark:bg-black">
+                    <div className="rounded-2xl overflow-hidden border border-[#0e0f0c]/10 dark:border-white/10 mb-4 sm:mb-6 aspect-video bg-[#e8ebe6] dark:bg-black">
                       {project.image ? (
                         <img
                           src={project.image}
@@ -90,7 +90,7 @@ export const ProjectsSection = () => {
                       )}
                     </div>
 
-                    <p className="text-[#454745] dark:text-[#868685] font-medium leading-relaxed mb-8">
+                    <p className="text-[#454745] dark:text-[#868685] font-medium leading-relaxed mb-5 sm:mb-8">
                       {project.desc}
                     </p>
 

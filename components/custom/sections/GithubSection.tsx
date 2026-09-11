@@ -80,19 +80,19 @@ export const GithubSection = () => {
   };
 
   return (
-    <section className="bg-white dark:bg-[#121311] py-24 px-6 relative z-20 border-t border-[#0e0f0c]/5 dark:border-white/5 transition-colors duration-300">
+    <section className="bg-white dark:bg-[#121311] py-14 sm:py-24 px-6 relative z-20 border-t border-[#0e0f0c]/5 dark:border-white/5 transition-colors duration-300">
       <div className="max-w-5xl mx-auto flex flex-col items-center">
         <FadeIn>
-          <div className="flex items-center gap-3 justify-center mb-6">
-            <h2 className="text-5xl sm:text-7xl font-black text-[#0e0f0c] dark:text-white tracking-tight text-center">Open Source</h2>
+          <div className="flex items-center gap-3 justify-center mb-3 sm:mb-6">
+            <h2 className="text-4xl sm:text-7xl font-black text-[#0e0f0c] dark:text-white tracking-tight text-center">Open Source</h2>
           </div>
-          <p className="text-[#454745] dark:text-[#868685] text-lg font-medium text-center max-w-2xl mx-auto mb-10">
+          <p className="text-[#454745] dark:text-[#868685] text-base sm:text-lg font-medium text-center max-w-2xl mx-auto mb-6 sm:mb-10">
             A visual record of my engineering output. Active contributor across personal projects and open-source.
           </p>
         </FadeIn>
 
         <FadeIn delay={0.2} className="w-full flex flex-col items-center">
-          <div className="mb-8 flex items-center gap-3">
+          <div className="mb-5 sm:mb-8 flex items-center gap-3">
             <Calendar className="w-5 h-5 accent-text" />
             <select
               value={year}
