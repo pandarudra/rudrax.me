@@ -19,6 +19,26 @@ type HistoryItem = {
   valueType?: 'string' | 'number' | 'boolean' | 'undefined' | 'object' | 'function' | 'bigint' | 'symbol';
 };
 
+// Trailing identifier chain being typed, e.g. "dev.na" from "1+1; dev.na"
+const IDENT_CHAIN_RE = /[a-zA-Z_$][\w$]*(?:\.[a-zA-Z_$][\w$]*)*\.?[\w$]*$/;
+
+/** Own property names across the prototype chain — same idea real console autocomplete uses. */
+const getPropertyNames = (obj: unknown): string[] => {
+  const names = new Set<string>();
+  let cur: any = obj;
+  let depth = 0;
+  while (cur != null && depth < 8) {
+    try {
+      Object.getOwnPropertyNames(cur).forEach((n) => {
+        if (/^[a-zA-Z_$][\w$]*$/.test(n)) names.add(n);
+      });
+    } catch {}
+    cur = Object.getPrototypeOf(cur);
+    depth++;
+  }
+  return Array.from(names);
+};
+
 const CleanDevCard = ({
   expanded = false,
   onInputFocus,
@@ -35,8 +55,70 @@ const CleanDevCard = ({
     { id: 'init-4', type: 'output', content: '"Rudra"', valueType: 'string' },
   ]);
   const [input, setInput] = useState('');
+  const [suggestions, setSuggestions] = useState<string[]>([]);
+  const [ghost, setGhost] = useState('');
+  const [activeIndex, setActiveIndex] = useState(-1);
+  const partialLenRef = React.useRef(0);
   const scrollContainerRef = React.useRef<HTMLDivElement>(null);
+  const inputRef = React.useRef<HTMLInputElement>(null);
   const iframeRef = React.useRef<HTMLIFrameElement | null>(null);
+
+  const clearSuggestions = () => {
+    setSuggestions([]);
+    setGhost('');
+    setActiveIndex(-1);
+    partialLenRef.current = 0;
+  };
+
+  const updateSuggestions = (value: string) => {
+    const win = iframeRef.current?.contentWindow as any;
+    const chain = value.match(IDENT_CHAIN_RE)?.[0];
+    if (!win || !chain) {
+      clearSuggestions();
+      return;
+    }
+
+    const lastDot = chain.lastIndexOf('.');
+    const base = lastDot === -1 ? '' : chain.slice(0, lastDot);
+    const partial = lastDot === -1 ? chain : chain.slice(lastDot + 1);
+
+    let names: string[];
+    if (!base) {
+      names = getPropertyNames(win);
+    } else {
+      let target: unknown;
+      try {
+        target = win.eval(base);
+      } catch {
+        clearSuggestions();
+        return;
+      }
+      if (target === null || target === undefined) {
+        clearSuggestions();
+        return;
+      }
+      names = getPropertyNames(Object(target));
+    }
+
+    const matches = names
+      .filter((n) => n.startsWith(partial))
+      .sort((a, b) => a.length - b.length || a.localeCompare(b))
+      .slice(0, 8);
+
+    partialLenRef.current = partial.length;
+    setSuggestions(matches);
+    setGhost(matches[0] ? matches[0].slice(partial.length) : '');
+    setActiveIndex(-1);
+  };
+
+  const acceptSuggestion = (name: string) => {
+    // Capture now — setInput's updater runs later (after React re-renders),
+    // by which point clearSuggestions() below would have already zeroed the ref.
+    const partialLen = partialLenRef.current;
+    setInput((prev) => prev.slice(0, prev.length - partialLen) + name);
+    clearSuggestions();
+    inputRef.current?.focus();
+  };
 
   React.useEffect(() => {
     // Setup isolated iframe sandbox for executing JS
@@ -70,8 +152,50 @@ const CleanDevCard = ({
   }, [history]);
 
   const handleKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
+    if (e.key === 'Tab') {
+      if (suggestions.length > 0) {
+        e.preventDefault();
+        acceptSuggestion(suggestions[activeIndex >= 0 ? activeIndex : 0]);
+      }
+      return;
+    }
+
+    if (e.key === 'ArrowRight') {
+      const el = e.currentTarget;
+      const atEnd = el.selectionStart === input.length && el.selectionEnd === input.length;
+      if (atEnd && ghost) {
+        e.preventDefault();
+        acceptSuggestion(suggestions[activeIndex >= 0 ? activeIndex : 0]);
+      }
+      return;
+    }
+
+    if (e.key === 'ArrowDown' && suggestions.length > 0) {
+      e.preventDefault();
+      setActiveIndex((i) => (i + 1) % suggestions.length);
+      return;
+    }
+
+    if (e.key === 'ArrowUp' && suggestions.length > 0) {
+      e.preventDefault();
+      setActiveIndex((i) => (i <= 0 ? suggestions.length - 1 : i - 1));
+      return;
+    }
+
+    if (e.key === 'Escape' && suggestions.length > 0) {
+      clearSuggestions();
+      return;
+    }
+
+    if (e.key === 'Enter' && activeIndex >= 0 && suggestions[activeIndex]) {
+      e.preventDefault();
+      acceptSuggestion(suggestions[activeIndex]);
+      return;
+    }
+
     if (e.key === 'Enter') {
       e.preventDefault();
+      clearSuggestions();
       if (!input.trim()) return;
 
       const newHistory: HistoryItem[] = [...history, { id: Date.now().toString(), type: 'input', content: input }];
@@ -203,16 +327,48 @@ const CleanDevCard = ({
         
         <div className="flex gap-3 py-1.5 items-start mt-1">
           <span className="text-[#3b78ff] select-none font-bold mt-0.5">{">"}</span>
-          <input
-            type="text"
-            value={input}
-            onChange={(e) => setInput(e.target.value)}
-            onKeyDown={handleKeyDown}
-            onFocus={onInputFocus}
-            className="flex-1 bg-transparent text-[#0e0f0c] dark:text-white focus:outline-none placeholder:text-[#868685]"
-            spellCheck={false}
-            autoComplete="off"
-          />
+          <div className="relative flex-1">
+            {/* Ghost completion — typed text invisible, remaining tail shown in muted color */}
+            <div aria-hidden className="absolute inset-0 whitespace-pre pointer-events-none">
+              <span className="invisible">{input}</span>
+              <span className="text-[#868685]/70">{ghost}</span>
+            </div>
+            <input
+              ref={inputRef}
+              type="text"
+              value={input}
+              onChange={(e) => {
+                setInput(e.target.value);
+                updateSuggestions(e.target.value);
+              }}
+              onKeyDown={handleKeyDown}
+              onFocus={onInputFocus}
+              onBlur={() => setTimeout(clearSuggestions, 120)}
+              className="relative w-full bg-transparent text-[#0e0f0c] dark:text-white focus:outline-none placeholder:text-[#868685]"
+              spellCheck={false}
+              autoComplete="off"
+            />
+            {suggestions.length > 0 && (
+              <div className="absolute left-0 top-full mt-1 z-20 min-w-35 max-w-60 rounded-lg border border-[#0e0f0c]/10 dark:border-white/10 bg-white dark:bg-[#1e1e1e] shadow-lg overflow-hidden py-1">
+                {suggestions.map((s, i) => (
+                  <div
+                    key={s}
+                    onMouseDown={(e) => {
+                      e.preventDefault();
+                      acceptSuggestion(s);
+                    }}
+                    className={`px-3 py-1 text-[13px] cursor-pointer whitespace-nowrap ${
+                      i === activeIndex
+                        ? "bg-[#3b78ff]/15 text-[#3b78ff]"
+                        : "text-[#454745] dark:text-[#a0a0a0] hover:bg-black/5 dark:hover:bg-white/5"
+                    }`}
+                  >
+                    {s}
+                  </div>
+                ))}
+              </div>
+            )}
+          </div>
         </div>
         <div className="h-2" />
       </div>
