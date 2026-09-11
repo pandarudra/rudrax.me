@@ -1,6 +1,24 @@
 export const projects = [
   {
     num: "01",
+    category: "Real-time Communication",
+    name: "NawaNapam",
+    image: "/files/nawanapam.png",
+    github: "https://github.com/NawaNapam/nawanapam-core",
+    live: "https://www.nawanapam.com/",
+    desc: "Real-time, one-to-one communication platform serving 5,000+ registered users, with a Redis-based matchmaking engine (Lua scripting, heartbeat tracking, session persistence) and RBAC/moderation APIs on PostgreSQL and Prisma.",
+  },
+  {
+    num: "02",
+    category: "Distributed Job Scheduling",
+    name: "Zan",
+    image: "/files/zan.png",
+    github: "https://github.com/pandarudra/Zan",
+    live: "https://zan-web.vercel.app/",
+    desc: "Distributed job-scheduling backend for a decentralized compute marketplace, using Redis and BullMQ for task orchestration and execution tracking, Azure Blob Storage, and an Electron desktop app for machine onboarding.",
+  },
+  {
+    num: "03",
     category: "Full Stack Platform",
     name: "Hostify",
     image: "/files/hostify.png",
@@ -9,7 +27,7 @@ export const projects = [
     desc: "A full-stack static site hosting platform with one-click GitHub deployments and custom subdomains.",
   },
   {
-    num: "02",
+    num: "04",
     category: "Real-time Collab",
     name: "Draw.wine",
     image: "/files/draw-wine.png",
@@ -18,7 +36,7 @@ export const projects = [
     desc: "Real-time collaborative whiteboard with Gemini AI integration, Socket.IO, and Solana wallet auth.",
   },
   {
-    num: "03",
+    num: "05",
     category: "Management System",
     name: "Inventra",
     image: "/files/ims.png",
@@ -28,7 +46,7 @@ export const projects = [
   },
 
   {
-    num: "04",
+    num: "06",
     category: "File Sharing",
     name: "Zipster",
     image: "/files/zipster.png",
@@ -38,7 +56,7 @@ export const projects = [
   },
 
   {
-    num: "05",
+    num: "07",
     category: "Real-time Chat",
     name: "ChitChat",
     image: "/files/chitchat.png",

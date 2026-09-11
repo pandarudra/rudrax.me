@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import { motion, AnimatePresence } from "motion/react";
-import { ExternalLink, Github, FileCode } from "lucide-react";
+import { ExternalLink, Github, FileCode, ImageOff } from "lucide-react";
 import { FadeIn } from "../ui/FadeIn";
 import { projects } from "@/constants";
 
@@ -74,11 +74,20 @@ export const ProjectsSection = () => {
                     </h3>
 
                     <div className="rounded-2xl overflow-hidden border border-[#0e0f0c]/10 dark:border-white/10 mb-6 aspect-video bg-[#e8ebe6] dark:bg-black">
-                      <img
-                        src={project.image}
-                        alt={project.name}
-                        className="w-full h-full object-cover"
-                      />
+                      {project.image ? (
+                        <img
+                          src={project.image}
+                          alt={project.name}
+                          className="w-full h-full object-cover"
+                        />
+                      ) : (
+                        <div className="w-full h-full flex flex-col items-center justify-center gap-2 font-mono text-[#454745] dark:text-[#868685]">
+                          <ImageOff className="size-6 opacity-60" />
+                          <span className="text-[12px] uppercase tracking-widest opacity-70">
+                            Preview coming soon
+                          </span>
+                        </div>
+                      )}
                     </div>
 
                     <p className="text-[#454745] dark:text-[#868685] font-medium leading-relaxed mb-8">

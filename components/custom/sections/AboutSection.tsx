@@ -121,7 +121,7 @@ export const AboutSection = () => {
 
                 <div className="inline-flex items-center gap-2 px-4 py-2 rounded-[24px] accent-tint text-[14px] font-black accent-text">
                   <Award className="w-4 h-4" />
-                  <span>CGPA: 9.25 / 10</span>
+                  <span>CGPA: 9.178 / 10</span>
                 </div>
               </div>
             </FadeIn>
@@ -139,8 +139,8 @@ export const AboutSection = () => {
                     <ChevronRight className="w-4 h-4" />
                   </div>
                   <div>
-                    <span className="text-[16px] font-black text-[#0e0f0c] dark:text-white">Stanford Code in Place 2024</span>
-                    <p className="text-[14px] text-[#454745] dark:text-[#868685] font-medium mt-1">Selected participant in Stanford's global programming course.</p>
+                    <span className="text-[16px] font-black text-[#0e0f0c] dark:text-white">SAP Certified Associate</span>
+                    <p className="text-[14px] text-[#454745] dark:text-[#868685] font-medium mt-1">Back-End Developer, ABAP Cloud.</p>
                   </div>
                 </li>
 

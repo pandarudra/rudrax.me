@@ -1,10 +1,16 @@
 "use client";
 
 import React, { useState, useEffect } from "react";
-import { ArrowRight } from "lucide-react";
+import { ArrowRight, Download, FileText, X } from "lucide-react";
 import { FadeIn } from "../ui/FadeIn";
 import { motion, AnimatePresence } from "motion/react";
 import { useRouter } from "next/navigation";
+import {
+  Dialog,
+  DialogContent,
+  DialogHeader,
+  DialogTitle,
+} from "@/components/ui/dialog";
 
 type HistoryItem = {
   id: string;
@@ -217,6 +223,7 @@ const CleanDevCard = ({
 export const HeroSection = () => {
   const router = useRouter();
   const [devCardFocused, setDevCardFocused] = useState(false);
+  const [resumeOpen, setResumeOpen] = useState(false);
 
   // Lock page scroll while the console is centered.
   useEffect(() => {
@@ -273,8 +280,53 @@ export const HeroSection = () => {
                 Explore Blogs
                 <ArrowRight className="size-5 transition-transform group-hover:translate-x-1" />
               </a>
-         
+
+              <button
+                type="button"
+                onClick={() => setResumeOpen(true)}
+                className="w-full sm:w-auto group inline-flex h-14 items-center justify-center gap-2 rounded-[24px] border-2 border-[#0e0f0c] dark:border-white bg-transparent px-8 text-[16px] font-bold text-[#0e0f0c] dark:text-white transition-all hover:bg-[#0e0f0c] hover:text-white dark:hover:bg-white dark:hover:text-[#0e0f0c] hover:scale-105 active:scale-95 cursor-pointer"
+              >
+                Resume
+                <FileText className="size-5" />
+              </button>
+
             </FadeIn>
+
+            <Dialog open={resumeOpen} onOpenChange={setResumeOpen}>
+              <DialogContent
+                showCloseButton={false}
+                className="w-[95vw] sm:max-w-4xl h-[90vh] max-h-225 flex flex-col gap-0 p-0 rounded-[24px] bg-white dark:bg-[#0e0f0c] border border-[#0e0f0c]/10 dark:border-white/10 overflow-hidden"
+              >
+                <DialogHeader className="flex-row items-center justify-between gap-4 px-5 sm:px-6 py-4 border-b border-[#0e0f0c]/10 dark:border-white/10 space-y-0">
+                  <DialogTitle className="text-lg sm:text-xl font-black text-[#0e0f0c] dark:text-white">
+                    Resume
+                  </DialogTitle>
+                  <div className="flex items-center gap-2">
+                    <a
+                      href="/files/rudra_resume.pdf"
+                      download="Rudramadhab_Panda_Resume.pdf"
+                      className="inline-flex items-center gap-2 h-10 px-4 rounded-[24px] accent-bg text-[13px] font-bold transition-transform hover:scale-105 active:scale-95"
+                    >
+                      <Download className="size-4" />
+                      Download
+                    </a>
+                    <button
+                      type="button"
+                      aria-label="Close"
+                      onClick={() => setResumeOpen(false)}
+                      className="size-10 rounded-full border border-[#0e0f0c]/10 dark:border-white/10 flex items-center justify-center text-[#0e0f0c] dark:text-white hover:bg-black/5 dark:hover:bg-white/5 transition-colors"
+                    >
+                      <X className="size-4" />
+                    </button>
+                  </div>
+                </DialogHeader>
+                <iframe
+                  src="/files/rudra_resume.pdf"
+                  title="Rudramadhab Panda — Resume"
+                  className="flex-1 w-full bg-white"
+                />
+              </DialogContent>
+            </Dialog>
 
           </div>
 

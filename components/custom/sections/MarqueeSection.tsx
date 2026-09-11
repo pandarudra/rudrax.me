@@ -2,12 +2,26 @@
 
 import { motion, useScroll, useTransform } from "motion/react";
 import { useEffect, useState, useRef } from "react";
-import { Sparkles, Code2, Cpu, Database, Globe, Layout, Smartphone, Zap } from "lucide-react";
+import {
+  SiReact,
+  SiNextdotjs,
+  SiSvelte,
+  SiTailwindcss,
+  SiTypescript,
+  SiJavascript,
+  SiCplusplus,
+  SiNodedotjs,
+  SiExpress,
+  SiSocketdotio,
+  SiPostgresql,
+  SiNestjs,
+  SiWebrtc,
+} from "react-icons/si";
 
 const TechItem = ({ icon: Icon, label }: { icon: React.ElementType, label: string }) => (
-  <div className="flex items-center gap-3 px-8 py-4 bg-secondary/85 rounded-full border border-border shadow-sm">
-    <Icon className="w-6 h-6 text-primary" />
-    <span className="text-xl font-medium tracking-wide">{label}</span>
+  <div className="flex items-center justify-center gap-3 p-4 sm:px-8 sm:py-4 bg-secondary/85 rounded-full border border-border shadow-sm">
+    <Icon className="w-6 h-6 text-primary shrink-0" />
+    <span className="hidden sm:inline text-xl font-medium tracking-wide">{label}</span>
   </div>
 );
 
@@ -23,23 +37,23 @@ export const MarqueeSection = () => {
   const x2 = useTransform(scrollYProgress, [0, 1], [-500, 0]);
 
   const row1 = [
-    { icon: Code2, label: "React.js" },
-    { icon: Layout, label: "Next.js" },
-    { icon: Zap, label: "Svelte" },
-    { icon: Globe, label: "Tailwind CSS" },
-    { icon: Code2, label: "TypeScript" },
-    { icon: Code2, label: "JavaScript" },
-    { icon: Cpu, label: "C++" },
+    { icon: SiReact, label: "React.js" },
+    { icon: SiNextdotjs, label: "Next.js" },
+    { icon: SiSvelte, label: "SvelteKit" },
+    { icon: SiTailwindcss, label: "Tailwind CSS" },
+    { icon: SiTypescript, label: "TypeScript" },
+    { icon: SiJavascript, label: "JavaScript" },
+    { icon: SiCplusplus, label: "C++" },
   ];
 
   const row2 = [
-    { icon: Database, label: "Node.js" },
-    { icon: Cpu, label: "Express.js" },
-    { icon: Zap, label: "Socket.IO" },
-    { icon: Database, label: "SQL" },
-    { icon: Smartphone, label: "React Native" },
-    { icon: Sparkles, label: "NestJS" },
-    { icon: Globe, label: "Canvas API" },
+    { icon: SiNodedotjs, label: "Node.js" },
+    { icon: SiExpress, label: "Express.js" },
+    { icon: SiSocketdotio, label: "Socket.IO" },
+    { icon: SiPostgresql, label: "PostgreSQL" },
+    { icon: SiReact, label: "React Native" },
+    { icon: SiNestjs, label: "NestJS" },
+    { icon: SiWebrtc, label: "WebRTC" },
   ];
 
   // Tripling for seamless scroll

@@ -2,7 +2,7 @@
 
 import React, { useEffect, useState } from "react";
 import { FadeIn } from "../ui/FadeIn";
-import { ExternalLink, Code2, Layers, Wrench } from "lucide-react";
+import { ExternalLink, Code2, BrainCog, Server, Layout, Database, Cloud } from "lucide-react";
 import { leetcode_username } from "@/constants";
 
 interface LeetCodeData {
@@ -257,17 +257,32 @@ export const SkillsLeetCodeSection = () => {
     {
       title: "Languages",
       icon: <Code2 className="w-4 h-4" />,
-      skills: ["C / C++", "JavaScript", "Python", "TypeScript"]
+      skills: ["C", "C++", "JavaScript", "TypeScript"]
     },
     {
-      title: "Frameworks",
-      icon: <Layers className="w-4 h-4" />,
-      skills: ["React.js", "Node.js", "Express.js", "Next.js", "Tailwind CSS", "Bootstrap", "Django"]
+      title: "Core CS",
+      icon: <BrainCog className="w-4 h-4" />,
+      skills: ["Data Structures", "Algorithms", "OOP", "Operating Systems", "Complexity Analysis"]
     },
     {
-      title: "Tools",
-      icon: <Wrench className="w-4 h-4" />,
-      skills: ["Git", "GitHub", "MongoDB", "Vercel", "VS Code", "Figma", "Docker", "AWS", "Firebase", "Azure"]
+      title: "Backend & Distributed Systems",
+      icon: <Server className="w-4 h-4" />,
+      skills: ["Node.js", "Express.js", "NestJS", "Socket.IO", "WebRTC", "BullMQ"]
+    },
+    {
+      title: "Frontend",
+      icon: <Layout className="w-4 h-4" />,
+      skills: ["React.js", "Next.js", "SvelteKit", "React Native", "Tailwind CSS"]
+    },
+    {
+      title: "Databases",
+      icon: <Database className="w-4 h-4" />,
+      skills: ["PostgreSQL", "MongoDB", "Redis", "Prisma"]
+    },
+    {
+      title: "Cloud & Tools",
+      icon: <Cloud className="w-4 h-4" />,
+      skills: ["AWS", "Azure", "Docker", "Git", "GitHub", "Linux", "Postman"]
     }
   ];
 
