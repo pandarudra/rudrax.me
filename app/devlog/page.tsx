@@ -43,7 +43,23 @@ export default function DevLogPage() {
   const [error, setError] = useState<string | null>(null);
 
   useEffect(() => {
+    const CACHE_KEY = `devlog_events_${GITHUB_USERNAME}`;
+    const CACHE_TTL = 5 * 60 * 1000; // 5 minutes
+
     const fetchActivity = async () => {
+      // Check sessionStorage cache first
+      try {
+        const cached = sessionStorage.getItem(CACHE_KEY);
+        if (cached) {
+          const { timestamp, events: cachedEvents } = JSON.parse(cached);
+          if (Date.now() - timestamp < CACHE_TTL) {
+            setEvents(cachedEvents);
+            setLoading(false);
+            return;
+          }
+        }
+      } catch (_) { /* sessionStorage unavailable or parse error */ }
+
       try {
         const res = await fetch(
           `https://api.github.com/users/${GITHUB_USERNAME}/events/public?per_page=50`
@@ -72,6 +88,14 @@ export default function DevLogPage() {
         }
         
         setEvents(limitedEvents);
+
+        // Cache in sessionStorage
+        try {
+          sessionStorage.setItem(CACHE_KEY, JSON.stringify({
+            timestamp: Date.now(),
+            events: limitedEvents,
+          }));
+        } catch (_) { /* quota exceeded or private browsing */ }
       } catch (err: any) {
         setError(err.message || "Failed to fetch");
       } finally {
@@ -106,8 +130,9 @@ export default function DevLogPage() {
         </Link>
 
         <motion.h1
-          initial={{ opacity: 0, y: 30 }}
+          initial={{ opacity: 0, y: 16 }}
           animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.45, ease: [0.22, 1, 0.36, 1] }}
           className="text-4xl sm:text-6xl font-black tracking-tight text-[#0e0f0c] dark:text-white mb-4"
         >
           GitHub <span className="accent-text">DevLog</span>
@@ -143,11 +168,11 @@ export default function DevLogPage() {
               {events.map((event, idx) => (
                 <motion.div
                   key={event.id}
-                  initial={{ opacity: 0, x: -20 }}
+                  initial={{ opacity: 0, x: -8 }}
                   animate={{ opacity: 1, x: 0 }}
-                  transition={{ delay: idx * 0.05 }}
+                  transition={{ delay: idx * 0.035, duration: 0.4, ease: [0.22, 1, 0.36, 1] }}
                   className="relative pl-12"
-                >
+>
                   {/* Timeline dot */}
                   <div className="absolute left-[14px] top-[22px] w-[11px] h-[11px] rounded-full bg-white dark:bg-[#121311] border-2 border-[#0e0f0c]/20 dark:border-white/20 z-10" />
 

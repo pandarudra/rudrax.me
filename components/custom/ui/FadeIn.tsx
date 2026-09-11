@@ -16,23 +16,22 @@ interface FadeInProps {
 export const FadeIn = ({
   children,
   delay = 0,
-  duration = 0.7,
+  duration = 0.45,
   x = 0,
-  y = 30,
+  y = 14,
   className = "",
   once = true,
 }: FadeInProps) => {
   return (
     <motion.div
       className={className}
-      style={{ willChange: "transform, opacity" }}
       initial={{ opacity: 0, x, y }}
       whileInView={{ opacity: 1, x: 0, y: 0 }}
-      viewport={{ once, margin: "50px", amount: 0.1 }}
+      viewport={{ once, margin: "0px", amount: 0.1 }}
       transition={{
         duration,
         delay,
-        ease: [0.25, 0.1, 0.25, 1],
+        ease: [0.22, 1, 0.36, 1],
       }}
     >
       {children}

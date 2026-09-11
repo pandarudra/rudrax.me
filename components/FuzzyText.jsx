@@ -18,6 +18,10 @@ const FuzzyText = ({
     const canvas = canvasRef.current;
     if (!canvas) return;
 
+    // Respect prefers-reduced-motion: render one static frame instead of looping
+    const prefersReducedMotion =
+      window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
     const init = async () => {
       if (document.fonts?.ready) {
         await document.fonts.ready;
@@ -95,15 +99,14 @@ const FuzzyText = ({
       let isHovering = false;
       const fuzzRange = 30;
 
-      const run = () => {
-        if (isCancelled) return;
+      // Shared draw helper — intensity 0 = crisp, >0 = fuzzy
+      const drawFrame = (intensity) => {
         ctx.clearRect(
           -fuzzRange,
           -fuzzRange,
           offscreenWidth + 2 * fuzzRange,
           tightHeight + 2 * fuzzRange
         );
-        const intensity = isHovering ? hoverIntensity : baseIntensity;
         for (let j = 0; j < tightHeight; j++) {
           const dx = Math.floor(intensity * (Math.random() - 0.5) * fuzzRange);
           ctx.drawImage(
@@ -118,6 +121,17 @@ const FuzzyText = ({
             1
           );
         }
+      };
+
+      // For reduced-motion users: one static, crisp render — no loop
+      if (prefersReducedMotion) {
+        drawFrame(0);
+        return;
+      }
+
+      const run = () => {
+        if (isCancelled) return;
+        drawFrame(isHovering ? hoverIntensity : baseIntensity);
         animationFrameId = window.requestAnimationFrame(run);
       };
 
@@ -132,12 +146,18 @@ const FuzzyText = ({
         );
       };
 
+      // rAF-throttled mousemove: hit-test runs at most once per frame
+      let mouseMoveScheduled = false;
       const handleMouseMove = (e) => {
-        if (!enableHover) return;
-        const rect = canvas.getBoundingClientRect();
-        const x = e.clientX - rect.left;
-        const y = e.clientY - rect.top;
-        isHovering = isInsideTextArea(x, y);
+        if (!enableHover || mouseMoveScheduled) return;
+        mouseMoveScheduled = true;
+        requestAnimationFrame(() => {
+          const rect = canvas.getBoundingClientRect();
+          const x = e.clientX - rect.left;
+          const y = e.clientY - rect.top;
+          isHovering = isInsideTextArea(x, y);
+          mouseMoveScheduled = false;
+        });
       };
 
       const handleMouseLeave = () => {

@@ -37,7 +37,7 @@ const StaticCard = ({ cert }: { cert: CertificateData }) => {
   const iconColor = getIconClass(cert.iconColor);
 
   return (
-    <div className={`flex-shrink-0 w-[300px] sm:w-[360px] h-[240px] p-8 rounded-[24px] border ${bgClass} flex flex-col justify-between items-start transition-all duration-300`}>
+    <div className={`flex-shrink-0 w-[300px] sm:w-[360px] h-[240px] p-8 rounded-[24px] border ${bgClass} flex flex-col justify-between items-start transition-all duration-300 hover:border-[#0e0f0c]/20 dark:hover:border-white/20`}>
       <div className="w-full">
         {cert.image_url ? (
           <div className="w-12 h-12 mb-6 rounded-full overflow-hidden bg-white/50 dark:bg-black/50 p-1">
@@ -48,7 +48,7 @@ const StaticCard = ({ cert }: { cert: CertificateData }) => {
             <Award className={`w-5 h-5 ${iconColor}`} />
           </div>
         )}
-        
+
         <h3 className="text-[18px] sm:text-[20px] font-bold mb-2 text-[#0e0f0c] dark:text-white tracking-tight leading-snug line-clamp-2">{cert.title}</h3>
         <p className="text-[#454745] dark:text-[#868685] font-medium text-[13px] truncate">
           {cert.issuer}
@@ -158,13 +158,14 @@ export const CertificatesSection = () => {
             ref={scrollRef}
             className="flex gap-6 overflow-x-auto snap-x snap-mandatory pb-8 pr-6 [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none]"
           >
-            {allCertificates.map((cert, index) => (
-              <div key={index} className="snap-start">
-                <FadeIn delay={index * 0.1} y={20}>
+            {allCertificates.map((cert) => (
+              <div key={cert.title} className="snap-start">
+                <FadeIn delay={0.05} y={20}>
                   <StaticCard cert={cert} />
                 </FadeIn>
               </div>
             ))}
+
           </div>
         </div>
       </div>

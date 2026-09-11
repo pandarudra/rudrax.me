@@ -1,25 +1,24 @@
-──────────────────────────────────────────────────────────────────
+──────────────────────────────────────────────────────────────────────────
 Using gpt-4o model with API key from environment.
 Aider v0.86.2
 Main model: gpt-4o with diff edit format
 Weak model: gpt-4o-mini
-Git repo: .git with 155 files
+Git repo: .git with 156 files
 Repo-map: using 4096 tokens, auto refresh
 Here are summaries of some files present in my git repository.
 Do not propose changes to these files, treat them as *read-only*.
-If you need to edit any of these files, ask me to *add them to the
-chat* first.
+If you need to edit any of these files, ask me to *add them to the chat* 
+first.
 
 app/api/credly/route.ts:
 ⋮
 │export async function GET() {
 │  try {
 │    const response = await 
-fetch(`https://www.credly.com/users/${credly_username}/badges.json
-`);
+fetch(`https://www.credly.com/users/${credly_username}/badges.json`);
 │    if (!response.ok) {
-│      return NextResponse.json({ error: "Failed to fetch badges" 
-}, { status: response.status });
+│      return NextResponse.json({ error: "Failed to fetch badges" }, { 
+status: response.status });
 │    }
 │    const data = await response.json();
 │    return NextResponse.json(data);
@@ -48,8 +47,8 @@ app/code-duel/page.tsx:
 ⋮
 │                <button
 │                  onClick={() => setGameState("menu")}
-│                  className="inline-flex items-center gap-2 px-8 
-py-4 rounded-[24px] accent-bg text
+│                  className="inline-flex items-center gap-2 px-8 py-4 
+rounded-[24px] accent-bg text
 ⋮
 
 app/devlog/page.tsx:
@@ -85,20 +84,19 @@ app/devlog/page.tsx:
 │                  className="relative pl-12"
 │                >
 │                  {/* Timeline dot */}
-│                  <div className="absolute left-[14px] top-[22px]
+│                  <div className="absolute left-[14px] top-[22px] 
 w-[11px] h-[11px] rounded-full bg
 │
-│                  <div className="p-5 sm:p-6 rounded-[20px] 
-bg-white dark:bg-[#121311] border borde
+│                  <div className="p-5 sm:p-6 rounded-[20px] bg-white 
+dark:bg-[#121311] border borde
 │                    {/* Repo + Date header */}
-│                    <div className="flex items-center 
-justify-between mb-3">
+│                    <div className="flex items-center justify-between 
+mb-3">
 │                      <a
-│                        
-href={`https://github.com/${event.repo.name}`}
+│                        href={`https://github.com/${event.repo.name}`}
 │                        target="_blank"
 │                        rel="noopener noreferrer"
-│                        className="inline-flex items-center gap-2
+│                        className="inline-flex items-center gap-2 
 text-[13px] font-bold accent-text
 │                      >
 │                        <GitBranch className="w-3.5 h-3.5" />
@@ -110,8 +108,7 @@ app/estimate/page.tsx:
 ⋮
 │                type="range"
 ⋮
-│                onChange={(e) => 
-setComplexity(Number(e.target.value))}
+│                onChange={(e) => setComplexity(Number(e.target.value))}
 ⋮
 
 app/game/page.tsx:
@@ -218,8 +215,8 @@ components/custom/sections/HeroSection.tsx:
 │  id: string;
 │  type: 'input' | 'output' | 'error' | 'log';
 │  content: string;
-│  valueType?: 'string' | 'number' | 'boolean' | 'undefined' | 
-'object' | 'function' | 'bigint' | 's
+│  valueType?: 'string' | 'number' | 'boolean' | 'undefined' | 'object' | 
+'function' | 'bigint' | 's
 ⋮
 │              <a
 │                href="#projects"
@@ -228,8 +225,8 @@ components/custom/sections/HeroSection.tsx:
 │               
 │                  router.push("/blog");
 │                }}
-│                className="w-full sm:w-auto group inline-flex 
-h-14 items-center justify-center gap-
+│                className="w-full sm:w-auto group inline-flex h-14 
+items-center justify-center gap-
 ⋮
 
 components/custom/sections/ProjectsSection.tsx:
@@ -305,8 +302,8 @@ components/custom/ui/Footer.tsx:
 │                  value={email}
 │                  onChange={(e) => setEmail(e.target.value)}
 │                  required
-│                  className="w-full px-6 py-4 rounded-[24px] 
-bg-black/5 dark:bg-white/5 border bord
+│                  className="w-full px-6 py-4 rounded-[24px] bg-black/5 
+dark:bg-white/5 border bord
 ⋮
 │              <div className="relative group">
 │                <textarea
@@ -316,8 +313,8 @@ bg-black/5 dark:bg-white/5 border bord
 │                  onChange={(e) => setMessage(e.target.value)}
 │                  required
 │                  rows={4}
-│                  className="w-full px-6 py-4 rounded-[24px] 
-bg-black/5 dark:bg-white/5 border bord
+│                  className="w-full px-6 py-4 rounded-[24px] bg-black/5 
+dark:bg-white/5 border bord
 ⋮
 
 components/custom/ui/email-templete.tsx:
@@ -379,8 +376,8 @@ components/ui/avatar.tsx:
 components/ui/breadcrumb.tsx:
 ⋮
 │function Breadcrumb({ ...props }: React.ComponentProps<"nav">) {
-│  return <nav aria-label="breadcrumb" data-slot="breadcrumb" 
-{...props} />
+│  return <nav aria-label="breadcrumb" data-slot="breadcrumb" {...props} 
+/>
 ⋮
 │function BreadcrumbList({ className, ...props }: 
 React.ComponentProps<"ol">) {
@@ -388,12 +385,13 @@ React.ComponentProps<"ol">) {
 │    <ol
 │      data-slot="breadcrumb-list"
 │      className={cn(
-│        "text-muted-foreground flex flex-wrap items-center 
-gap-1.5 text-sm break-words sm:gap-2.5",
+│        "text-muted-foreground flex flex-wrap items-center gap-1.5 
+text-sm break-words sm:gap-2.5",
 │        className
 │      )}
 │      {...props}
 │    />
+│  )
 ⋮
 │function BreadcrumbLink({
 │  asChild,
@@ -428,76 +426,37 @@ components/ui/button-group.tsx:
 │  className,
 │  orientation,
 │  ...props
-│}: React.ComponentProps<"div"> & VariantProps<typeof 
-buttonGroupVariants>) {
-⋮
-│  return (
-│    <Comp
-│      className={cn(
-│        "bg-muted flex items-center gap-2 rounded-md border px-4 
-text-sm font-medium shadow-xs [&_s
-│        className
-│      )}
-│      {...props}
-⋮
-│      data-slot="button-group-separator"
-│      orientation={orientation}
-│      className={cn(
-│        "bg-input relative !m-0 self-stretch 
-data-[orientation=vertical]:h-auto",
-│        className
 ⋮
 
-components/ui/calendar.tsx:
+components/ui/card.tsx:
 ⋮
-│          if (orientation === "left") {
-│            return (
-│              <ChevronLeftIcon className={cn("size-4", 
-className)} {...props} />
-│            )
-⋮
-│              <ChevronRightIcon
-│                className={cn("size-4", className)}
-⋮
-│            <ChevronDownIcon className={cn("size-4", className)} 
-{...props} />
-⋮
-│    <Button
-│      ref={ref}
-│      variant="ghost"
-│      size="icon"
-⋮
-│      data-range-start={modifiers.range_start}
-│      data-range-end={modifiers.range_end}
-│      data-range-middle={modifiers.range_middle}
+│function Card({ className, ...props }: React.ComponentProps<"div">) {
+│  return (
+│    <div
+│      data-slot="card"
 │      className={cn(
-│        "data-[selected-single=true]:bg-primary 
-data-[selected-single=true]:text-primary-foreground
-│        defaultClassNames.day,
+│        "bg-card text-card-foreground flex flex-col gap-6 rounded-xl 
+border py-6 shadow-sm",
 │        className
 │      )}
 │      {...props}
 │    />
 │  )
-⋮
-
-components/ui/card.tsx:
-⋮
-│function Card({ className, ...props }: 
-React.ComponentProps<"div">) {
+│}
+│
+│function CardHeader({ className, ...props }: React.ComponentProps<"div">)
+{
 │  return (
 │    <div
-│      data-slot="card"
+│      data-slot="card-header"
 │      className={cn(
-│        "bg-card text-card-foreground flex flex-col gap-6 
-rounded-xl border py-6 shadow-sm",
+│        "@container/card-header grid auto-rows-min grid-rows-[auto_auto] 
+items-start gap-2 px-6 has
 │        className
 │      )}
 │      {...props}
 │    />
-⋮
-│function CardHeader({ className, ...props }: 
-React.ComponentProps<"div">) {
+│  )
 ⋮
 │function CardDescription({ className, ...props }: 
 React.ComponentProps<"div">) {
@@ -509,21 +468,21 @@ React.ComponentProps<"div">) {
 │    />
 │  )
 ⋮
-│function CardAction({ className, ...props }: 
-React.ComponentProps<"div">) {
+│function CardAction({ className, ...props }: React.ComponentProps<"div">)
+{
 │  return (
 │    <div
 │      data-slot="card-action"
 │      className={cn(
-│        "col-start-2 row-span-2 row-start-1 self-start 
-justify-self-end",
+│        "col-start-2 row-span-2 row-start-1 self-start justify-self-end",
 │        className
 │      )}
 │      {...props}
 │    />
+│  )
 ⋮
-│function CardFooter({ className, ...props }: 
-React.ComponentProps<"div">) {
+│function CardFooter({ className, ...props }: React.ComponentProps<"div">)
+{
 │  return (
 │    <div
 │      data-slot="card-footer"
@@ -551,8 +510,7 @@ components/ui/chart.tsx:
 │    icon?: React.ComponentType
 │  } & (
 │    | { color?: string; theme?: never }
-│    | { color?: never; theme: Record<keyof typeof THEMES, string>
-}
+│    | { color?: never; theme: Record<keyof typeof THEMES, string> }
 │  )
 ⋮
 
@@ -583,32 +541,6 @@ components/ui/command.tsx:
 │function CommandItem({
 │  className,
 │  ...props
-⋮
-
-components/ui/context-menu.tsx:
-⋮
-│  return (
-│    <ContextMenuPrimitive.SubTrigger
-│      data-slot="context-menu-sub-trigger"
-│      data-inset={inset}
-│      className={cn(
-│        "focus:bg-accent focus:text-accent-foreground 
-data-[state=open]:bg-accent data-[state=open]
-│        className
-│      )}
-│      {...props}
-│    >
-⋮
-│      className={cn(
-│        "bg-popover text-popover-foreground 
-data-[state=open]:animate-in data-[state=closed]:animat
-│        className
-⋮
-│    <span
-│      data-slot="context-menu-shortcut"
-│      className={cn(
-│        "text-muted-foreground ml-auto text-xs tracking-widest",
-│        className
 ⋮
 
 components/ui/dialog.tsx:
@@ -678,60 +610,104 @@ group-data-[vaul-drawer-direction=bottom]/drawer-content:text-ce
 │  ...props
 ⋮
 
-components/ui/empty.tsx:
+components/ui/field.tsx:
 ⋮
-│function Empty({ className, ...props }: 
-React.ComponentProps<"div">) {
+│  return (
+│    <fieldset
+│      data-slot="field-set"
+│      className={cn(
+│        "flex flex-col gap-6",
+│        "has-[>[data-slot=checkbox-group]]:gap-3 
+has-[>[data-slot=radio-group]]:gap-3",
+│        className
+│      )}
+│      {...props}
+│    />
+⋮
+│  return (
+│    <legend
+│      data-slot="field-legend"
+│      data-variant={variant}
+│      className={cn(
+│        "mb-3 font-medium",
+│        "data-[variant=legend]:text-base",
+│        "data-[variant=label]:text-sm",
+│        className
+│      )}
+│      {...props}
+│    />
+⋮
 │  return (
 │    <div
-│      data-slot="empty"
+│      data-slot="field-group"
 │      className={cn(
-│        "flex min-w-0 flex-1 flex-col items-center justify-center
-gap-6 rounded-lg border-dashed p-
+│        "group/field-group @container/field-group flex w-full flex-col 
+gap-7 data-[slot=checkbox-gr
 │        className
 │      )}
 │      {...props}
 │    />
 │  )
 ⋮
-│function EmptyHeader({ className, ...props }: 
-React.ComponentProps<"div">) {
 │  return (
 │    <div
-│      data-slot="empty-header"
+│      role="group"
+│      data-slot="field"
+│      data-orientation={orientation}
+│      className={cn(fieldVariants({ orientation }), className)}
+│      {...props}
+│    />
+│  )
+│}
+│
+⋮
+│      data-slot="field-content"
 │      className={cn(
-│        "flex max-w-sm flex-col items-center gap-2 text-center",
+│        "group/field-content flex flex-1 flex-col gap-1.5 leading-snug",
+│        className
+⋮
+│  return (
+│    <Label
+│      data-slot="field-label"
+│      className={cn(
+│        "group/field-label peer/field-label flex w-fit gap-2 leading-snug
+group-data-[disabled=true
+│        "has-[>[data-slot=field]]:w-full 
+has-[>[data-slot=field]]:flex-col has-[>[data-slot=field]]
+│        "has-data-[state=checked]:bg-primary/5 
+has-data-[state=checked]:border-primary dark:has-dat
+│        className
+│      )}
+│      {...props}
+⋮
+│  return (
+│    <div
+│      data-slot="field-label"
+│      className={cn(
+│        "flex w-fit items-center gap-2 text-sm leading-snug font-medium 
+group-data-[disabled=true]/
 │        className
 │      )}
 │      {...props}
 │    />
 │  )
 ⋮
-│}: React.ComponentProps<"div"> & VariantProps<typeof 
-emptyMediaVariants>) {
-⋮
-│function EmptyDescription({ className, ...props }: 
-React.ComponentProps<"p">) {
 │  return (
-│    <div
-│      data-slot="empty-description"
+│    <p
+│      data-slot="field-description"
 │      className={cn(
-│        "text-muted-foreground [&>a:hover]:text-primary 
-text-sm/relaxed [&>a]:underline [&>a]:under
+│        "text-muted-foreground text-sm leading-normal font-normal 
+group-has-[[data-orientation=hori
+│        "last:mt-0 nth-last-2:-mt-1 [[data-variant=legend]+&]:-mt-1.5",
+│        "[&>a:hover]:text-primary [&>a]:underline 
+[&>a]:underline-offset-4",
 │        className
 │      )}
 │      {...props}
-│    />
-│  )
 ⋮
-│function EmptyContent({ className, ...props }: 
-React.ComponentProps<"div">) {
-│  return (
-│    <div
-│      data-slot="empty-content"
 │      className={cn(
-│        "flex w-full max-w-sm min-w-0 flex-col items-center gap-4
-text-sm text-balance",
+│        "relative -my-2 h-5 text-sm 
+group-data-[variant=outline]/field-group:-mb-2",
 │        className
 ⋮
 
@@ -739,15 +715,13 @@ components/ui/form.tsx:
 ⋮
 │type FormFieldContextValue<
 │  TFieldValues extends FieldValues = FieldValues,
-│  TName extends FieldPath<TFieldValues> = 
-FieldPath<TFieldValues>,
+│  TName extends FieldPath<TFieldValues> = FieldPath<TFieldValues>,
 ⋮
 │type FormItemContextValue = {
 │  id: string
 ⋮
-│function FormControl({ ...props }: React.ComponentProps<typeof 
-Slot>) {
-│  const { error, formItemId, formDescriptionId, formMessageId } =
+│function FormControl({ ...props }: React.ComponentProps<typeof Slot>) {
+│  const { error, formItemId, formDescriptionId, formMessageId } = 
 useFormField()
 │
 │  return (
@@ -770,11 +744,10 @@ React.ComponentProps<"p">) {
 │      {...props}
 │    />
 ⋮
-│function FormMessage({ className, ...props }: 
-React.ComponentProps<"p">) {
+│function FormMessage({ className, ...props }: React.ComponentProps<"p">) 
+{
 │  const { error, formMessageId } = useFormField()
-│  const body = error ? String(error?.message ?? "") : 
-props.children
+│  const body = error ? String(error?.message ?? "") : props.children
 │
 │  if (!body) {
 │    return null
@@ -797,18 +770,6 @@ components/ui/input-otp.tsx:
 │  containerClassName,
 │  ...props
 ⋮
-│}) {
-│  return (
-│    <OTPInput
-│      data-slot="input-otp"
-│      containerClassName={cn(
-│        "flex items-center gap-2 has-disabled:opacity-50",
-│        containerClassName
-│      )}
-│      className={cn("disabled:cursor-not-allowed", className)}
-│      {...props}
-│    />
-⋮
 │function InputOTPGroup({ className, ...props }: 
 React.ComponentProps<"div">) {
 │  return (
@@ -818,11 +779,6 @@ React.ComponentProps<"div">) {
 │      {...props}
 │    />
 │  )
-⋮
-│      className={cn(
-│        "data-[active=true]:border-ring 
-data-[active=true]:ring-ring/50 data-[active=true]:aria-inv
-│        className
 ⋮
 
 components/ui/input.tsx:
@@ -843,114 +799,21 @@ dark:aria-invalid:ring-destructive/40 aria-invalid:border
 │        className
 ⋮
 
-components/ui/item.tsx:
+components/ui/kbd.tsx:
 ⋮
+│function Kbd({ className, ...props }: React.ComponentProps<"kbd">) {
 │  return (
-│    <div
-│      data-slot="item-content"
+│    <kbd
+│      data-slot="kbd"
 │      className={cn(
-│        "flex flex-1 flex-col gap-1 
-[&+[data-slot=item-content]]:flex-none",
+│        "bg-muted text-muted-foreground pointer-events-none inline-flex 
+h-5 w-fit min-w-5 items-cen
+│        "[&_svg:not([class*='size-'])]:size-3",
+│        "[[data-slot=tooltip-content]_&]:bg-background/20 
+[[data-slot=tooltip-content]_&]:text-back
 │        className
 │      )}
 │      {...props}
-│    />
-│  )
-⋮
-│  return (
-│    <div
-│      data-slot="item-title"
-│      className={cn(
-│        "flex w-fit items-center gap-2 text-sm leading-snug 
-font-medium",
-│        className
-│      )}
-│      {...props}
-│    />
-│  )
-⋮
-│  return (
-│    <p
-│      data-slot="item-description"
-│      className={cn(
-│        "text-muted-foreground line-clamp-2 text-sm 
-leading-normal font-normal text-balance",
-│        "[&>a:hover]:text-primary [&>a]:underline 
-[&>a]:underline-offset-4",
-│        className
-│      )}
-│      {...props}
-│    />
-⋮
-│  return (
-│    <div
-│      data-slot="item-header"
-│      className={cn(
-│        "flex basis-full items-center justify-between gap-2",
-│        className
-│      )}
-│      {...props}
-│    />
-│  )
-⋮
-│    <div
-│      data-slot="item-footer"
-│      className={cn(
-│        "flex basis-full items-center justify-between gap-2",
-│        className
-⋮
-
-components/ui/menubar.tsx:
-⋮
-│  return (
-│    <MenubarPrimitive.Trigger
-│      data-slot="menubar-trigger"
-│      className={cn(
-│        "focus:bg-accent focus:text-accent-foreground 
-data-[state=open]:bg-accent data-[state=open]
-│        className
-│      )}
-│      {...props}
-│    />
-│  )
-⋮
-│        className={cn(
-│          "bg-popover text-popover-foreground 
-data-[state=open]:animate-in data-[state=closed]:fade
-│          className
-⋮
-│}) {
-│  return (
-│    <MenubarPrimitive.Item
-│      data-slot="menubar-item"
-│      data-inset={inset}
-│      data-variant={variant}
-│      className={cn(
-│        "focus:bg-accent focus:text-accent-foreground 
-data-[variant=destructive]:text-destructive d
-│        className
-│      )}
-│      {...props}
-⋮
-│      className={cn(
-│        "focus:bg-accent focus:text-accent-foreground relative 
-flex cursor-default items-center gap
-│        className
-⋮
-│function MenubarShortcut({
-│  className,
-│  ...props
-│}: React.ComponentProps<"span">) {
-│  return (
-│    <span
-│      data-slot="menubar-shortcut"
-│      className={cn(
-│        "text-muted-foreground ml-auto text-xs tracking-widest",
-│        className
-│      )}
-│      {...props}
-│    />
-│  )
 ⋮
 
 components/ui/navigation-menu.tsx:
@@ -962,22 +825,6 @@ components/ui/navigation-menu.tsx:
 │  ...props
 ⋮
 │}) {
-│  return (
-│    <NavigationMenuPrimitive.Root
-│      data-slot="navigation-menu"
-│      data-viewport={viewport}
-│      className={cn(
-│        "group/navigation-menu relative flex max-w-max flex-1 
-items-center justify-center",
-│        className
-│      )}
-│      {...props}
-│    >
-⋮
-│      className={cn(
-│        "group flex flex-1 list-none items-center justify-center 
-gap-1",
-│        className
 ⋮
 │function NavigationMenuTrigger({
 │  className,
@@ -991,35 +838,6 @@ gap-1",
 │function NavigationMenuViewport({
 │  className,
 │  ...props
-│}: React.ComponentProps<typeof NavigationMenuPrimitive.Viewport>)
-{
-│  return (
-│    <div
-│      className={cn(
-│        "absolute top-full left-0 isolate z-50 flex 
-justify-center"
-│      )}
-⋮
-│function NavigationMenuLink({
-│  className,
-│  ...props
-│}: React.ComponentProps<typeof NavigationMenuPrimitive.Link>) {
-│  return (
-│    <NavigationMenuPrimitive.Link
-│      data-slot="navigation-menu-link"
-│      className={cn(
-│        "data-[active=true]:focus:bg-accent 
-data-[active=true]:hover:bg-accent data-[active=true]:b
-│        className
-│      )}
-│      {...props}
-│    />
-│  )
-⋮
-│      className={cn(
-│        "data-[state=visible]:animate-in 
-data-[state=hidden]:animate-out data-[state=hidden]:fade-o
-│        className
 ⋮
 
 components/ui/pagination.tsx:
@@ -1081,42 +899,6 @@ components/ui/scroll-area.tsx:
 
 components/ui/select.tsx:
 ⋮
-│function SelectTrigger({
-│  className,
-│  size = "default",
-│  children,
-│  ...props
-⋮
-│}) {
-│  return (
-│    <SelectPrimitive.Trigger
-│      data-slot="select-trigger"
-│      data-size={size}
-│      className={cn(
-│        "border-input data-[placeholder]:text-muted-foreground 
-[&_svg:not([class*='text-'])]:text-m
-│        className
-│      )}
-│      {...props}
-│    >
-⋮
-│        className={cn(
-│          "bg-popover text-popover-foreground 
-data-[state=open]:animate-in data-[state=closed]:anim
-│          position === "popper" &&
-│            "data-[side=bottom]:translate-y-1 
-data-[side=left]:-translate-x-1 data-[side=right]:tra
-│          className
-⋮
-│        <SelectScrollUpButton />
-│        <SelectPrimitive.Viewport
-│          className={cn(
-│            "p-1",
-│            position === "popper" &&
-│              "h-[var(--radix-select-trigger-height)] w-full 
-min-w-[var(--radix-select-trigger-widt
-│          )}
-⋮
 │function SelectScrollUpButton({
 │  className,
 │  ...props
@@ -1154,8 +936,8 @@ components/ui/sheet.tsx:
 │    <SheetPrimitive.Overlay
 │      data-slot="sheet-overlay"
 │      className={cn(
-│        "data-[state=open]:animate-in 
-data-[state=closed]:animate-out data-[state=closed]:fade-out-
+│        "data-[state=open]:animate-in data-[state=closed]:animate-out 
+data-[state=closed]:fade-out-
 │        className
 │      )}
 │      {...props}
@@ -1193,8 +975,7 @@ React.ComponentProps<"div">) {
 │  return (
 │    <div
 │      data-slot="sheet-footer"
-│      className={cn("mt-auto flex flex-col gap-2 p-4", 
-className)}
+│      className={cn("mt-auto flex flex-col gap-2 p-4", className)}
 │      {...props}
 │    />
 │  )
@@ -1222,20 +1003,87 @@ components/ui/sidebar.tsx:
 │function useSidebar() {
 │  const context = React.useContext(SidebarContext)
 │  if (!context) {
-│    throw new Error("useSidebar must be used within a 
-SidebarProvider.")
+│    throw new Error("useSidebar must be used within a SidebarProvider.")
 │  }
 │
 │  return context
 ⋮
-│function SidebarMenu({ className, ...props }: 
-React.ComponentProps<"ul">) {
+│  if (collapsible === "none") {
+│    return (
+│      <div
+│        data-slot="sidebar"
+│        className={cn(
+│          "bg-sidebar text-sidebar-foreground flex h-full 
+w-(--sidebar-width) flex-col",
+│          className
+│        )}
+│        {...props}
+│      >
+│        {children}
+⋮
+│function SidebarTrigger({
+│  className,
+│  onClick,
+│  ...props
+⋮
+│  return (
+│    <button
+│      data-sidebar="rail"
+│      data-slot="sidebar-rail"
+│      aria-label="Toggle Sidebar"
+│      tabIndex={-1}
+│      onClick={toggleSidebar}
+│      title="Toggle Sidebar"
+│      className={cn(
+│        "hover:after:bg-sidebar-border absolute inset-y-0 z-20 hidden w-4
+-translate-x-1/2 transiti
+│        "in-data-[side=left]:cursor-w-resize 
+in-data-[side=right]:cursor-e-resize",
+│        "[[data-side=left][data-state=collapsed]_&]:cursor-e-resize 
+[[data-side=right][data-state=c
+│        "hover:group-data-[collapsible=offcanvas]:bg-sidebar 
+group-data-[collapsible=offcanvas]:tra
+│        "[[data-side=left][data-collapsible=offcanvas]_&]:-right-2",
+│        "[[data-side=right][data-collapsible=offcanvas]_&]:-left-2",
+│        className
+⋮
+│  return (
+│    <main
+│      data-slot="sidebar-inset"
+│      className={cn(
+│        "bg-background relative flex w-full flex-1 flex-col",
+│        "md:peer-data-[variant=inset]:m-2 
+md:peer-data-[variant=inset]:ml-0 md:peer-data-[variant=i
+│        className
+⋮
+│      data-sidebar="content"
+│      className={cn(
+│        "flex min-h-0 flex-1 flex-col gap-2 overflow-auto 
+group-data-[collapsible=icon]:overflow-hi
+│        className
+⋮
+│  return (
+│    <Comp
+│      data-slot="sidebar-group-label"
+│      data-sidebar="group-label"
+│      className={cn(
+│        "text-sidebar-foreground/70 ring-sidebar-ring flex h-8 shrink-0 
+items-center rounded-md px-
+│        "group-data-[collapsible=icon]:-mt-8 
+group-data-[collapsible=icon]:opacity-0",
+│        className
+│      )}
+│      {...props}
+│    />
+│  )
+⋮
+│function SidebarMenu({ className, ...props }: React.ComponentProps<"ul">)
+{
 │  return (
 │    <ul
 │      data-slot="sidebar-menu"
 │      data-sidebar="menu"
-│      className={cn("flex w-full min-w-0 flex-col gap-1", 
-className)}
+│      className={cn("flex w-full min-w-0 flex-col gap-1", className)}
 │      {...props}
 │    />
 │  )
@@ -1260,30 +1108,61 @@ React.ComponentProps<"li">) {
 │  className,
 │  ...props
 ⋮
-
-components/ui/skeleton.tsx:
+│  return (
+│    <Comp
+│      data-slot="sidebar-menu-action"
+│      data-sidebar="menu-action"
+│      className={cn(
+│        "text-sidebar-foreground ring-sidebar-ring 
+hover:bg-sidebar-accent hover:text-sidebar-accen
+│        // Increases the hit area of the button on mobile.
+│        "after:absolute after:-inset-2 md:after:hidden",
+│        "peer-data-[size=sm]/menu-button:top-1",
+│        "peer-data-[size=default]/menu-button:top-1.5",
+│        "peer-data-[size=lg]/menu-button:top-2.5",
+│        "group-data-[collapsible=icon]:hidden",
+│        showOnHover &&
+│          
+"peer-data-[active=true]/menu-button:text-sidebar-accent-foreground 
+group-focus-within/me
 ⋮
-│function Skeleton({ className, ...props }: 
-React.ComponentProps<"div">) {
 │  return (
 │    <div
-│      data-slot="skeleton"
-│      className={cn("bg-accent animate-pulse rounded-md", 
-className)}
+│      data-slot="sidebar-menu-badge"
+│      data-sidebar="menu-badge"
+│      className={cn(
+│        "text-sidebar-foreground pointer-events-none absolute right-1 
+flex h-5 min-w-5 items-center
+│        "peer-hover/menu-button:text-sidebar-accent-foreground 
+peer-data-[active=true]/menu-button:
+│        "peer-data-[size=sm]/menu-button:top-1",
+│        "peer-data-[size=default]/menu-button:top-1.5",
+│        "peer-data-[size=lg]/menu-button:top-2.5",
+│        "group-data-[collapsible=icon]:hidden",
+│        className
+⋮
+│  return (
+│    <ul
+│      data-slot="sidebar-menu-sub"
+│      data-sidebar="menu-sub"
+│      className={cn(
+│        "border-sidebar-border mx-3.5 flex min-w-0 translate-x-px 
+flex-col gap-1 border-l px-2.5 py
+│        "group-data-[collapsible=icon]:hidden",
+│        className
+│      )}
 │      {...props}
 │    />
 │  )
 ⋮
 
-components/ui/spinner.tsx:
+components/ui/skeleton.tsx:
 ⋮
-│function Spinner({ className, ...props }: 
-React.ComponentProps<"svg">) {
+│function Skeleton({ className, ...props }: React.ComponentProps<"div">) {
 │  return (
-│    <Loader2Icon
-│      role="status"
-│      aria-label="Loading"
-│      className={cn("size-4 animate-spin", className)}
+│    <div
+│      data-slot="skeleton"
+│      className={cn("bg-accent animate-pulse rounded-md", className)}
 │      {...props}
 │    />
 │  )
@@ -1333,37 +1212,12 @@ components/ui/toggle-group.tsx:
 │  children,
 │  ...props
 ⋮
-│  }) {
-│  return (
-│    <ToggleGroupPrimitive.Root
-│      data-slot="toggle-group"
-│      data-variant={variant}
-│      data-size={size}
-│      data-spacing={spacing}
-│      style={{ "--gap": spacing } as React.CSSProperties}
-│      className={cn(
-│        "group/toggle-group flex w-fit items-center 
-gap-[--spacing(var(--gap))] rounded-md data-[sp
-│        className
-│      )}
-⋮
 │function ToggleGroupItem({
 │  className,
 │  children,
 │  variant,
 │  size,
 │  ...props
-⋮
-│      className={cn(
-│        toggleVariants({
-│          variant: context.variant || variant,
-│          size: context.size || size,
-│        }),
-│        "w-auto min-w-0 shrink-0 px-3 focus:z-10 
-focus-visible:z-10",
-│        "data-[spacing=0]:rounded-none 
-data-[spacing=0]:shadow-none data-[spacing=0]:first:rounded-
-│        className
 ⋮
 
 components/ui/tooltip.tsx:
@@ -1395,8 +1249,8 @@ hooks/use-mobile.ts:
 undefined>(undefined)
 │
 │  React.useEffect(() => {
-│    const mql = window.matchMedia(`(max-width: 
-${MOBILE_BREAKPOINT - 1}px)`)
+│    const mql = window.matchMedia(`(max-width: ${MOBILE_BREAKPOINT - 
+1}px)`)
 │    const onChange = () => {
 │      setIsMobile(window.innerWidth < MOBILE_BREAKPOINT)
 │    }
@@ -1422,10 +1276,9 @@ public/oneko/oneko.js:
 ⋮
 │(function oneko() {
 │  const isReducedMotion =
-│    window.matchMedia(`(prefers-reduced-motion: reduce)`) === 
-true ||
-│    window.matchMedia(`(prefers-reduced-motion: reduce)`).matches
-=== true;
+│    window.matchMedia(`(prefers-reduced-motion: reduce)`) === true ||
+│    window.matchMedia(`(prefers-reduced-motion: reduce)`).matches === 
+true;
 │
 │  if (isReducedMotion) return;
 │
@@ -1434,10 +1287,9 @@ true ||
 │  let nekoPosX = 150;
 ⋮
 │  function setSprite(name, frame) {
-│    const sprite = spriteSets[name][frame % 
-spriteSets[name].length];
-│    nekoEl.style.backgroundPosition = `${sprite[0] * 32}px 
-${sprite[1] * 32}px`;
+│    const sprite = spriteSets[name][frame % spriteSets[name].length];
+│    nekoEl.style.backgroundPosition = `${sprite[0] * 32}px ${sprite[1] * 
+32}px`;
 ⋮
 │  function resetIdleAnimation() {
 │    idleAnimation = null;

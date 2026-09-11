@@ -5,7 +5,7 @@ import { useEffect, useState, useRef } from "react";
 import { Sparkles, Code2, Cpu, Database, Globe, Layout, Smartphone, Zap } from "lucide-react";
 
 const TechItem = ({ icon: Icon, label }: { icon: React.ElementType, label: string }) => (
-  <div className="flex items-center gap-3 px-8 py-4 bg-secondary/50 backdrop-blur-md rounded-full border border-border shadow-sm">
+  <div className="flex items-center gap-3 px-8 py-4 bg-secondary/85 rounded-full border border-border shadow-sm">
     <Icon className="w-6 h-6 text-primary" />
     <span className="text-xl font-medium tracking-wide">{label}</span>
   </div>

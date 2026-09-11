@@ -1,17 +1,10 @@
 "use client";
 
-import React, { useState } from "react";
-import { ArrowRight, Zap, Play, RotateCcw, Download } from "lucide-react";
+import React, { useState, useEffect } from "react";
+import { ArrowRight } from "lucide-react";
 import { FadeIn } from "../ui/FadeIn";
-import { heroTags } from "@/constants";
-import { motion } from "motion/react";
+import { motion, AnimatePresence } from "motion/react";
 import { useRouter } from "next/navigation";
-
-const heroStats = [
-  { value: "7+", label: "core specialties" },
-  { value: "Realtime", label: "systems mindset" },
-  { value: "Full Stack", label: "product delivery" },
-];
 
 type HistoryItem = {
   id: string;
@@ -20,7 +13,15 @@ type HistoryItem = {
   valueType?: 'string' | 'number' | 'boolean' | 'undefined' | 'object' | 'function' | 'bigint' | 'symbol';
 };
 
-const CleanDevCard = () => {
+const CleanDevCard = ({
+  expanded = false,
+  onInputFocus,
+  onClose,
+}: {
+  expanded?: boolean;
+  onInputFocus?: () => void;
+  onClose?: () => void;
+}) => {
   const [history, setHistory] = useState<HistoryItem[]>([
     { id: 'init-1', type: 'input', content: 'const dev = { name: "Rudra", role: "Full-Stack" };' },
     { id: 'init-2', type: 'output', content: 'undefined', valueType: 'undefined' },
@@ -139,17 +140,29 @@ const CleanDevCard = () => {
   };
 
   return (
-    <div className="relative w-full max-w-lg mx-auto lg:ml-auto rounded-[24px] bg-white dark:bg-[#121311] border border-[#0e0f0c]/5 dark:border-white/5 shadow-2xl overflow-hidden flex flex-col font-mono text-[13px] sm:text-[14px] h-[400px] transition-colors duration-300">
+    <div
+      className={`relative w-full h-full rounded-[24px] bg-white dark:bg-[#121311] border border-[#0e0f0c]/5 dark:border-white/5 shadow-2xl overflow-hidden flex flex-col font-mono transition-colors duration-300 ${
+        expanded ? "text-[15px] sm:text-[16px]" : "text-[13px] sm:text-[14px]"
+      }`}
+    >
       <div className="flex items-center gap-3 px-6 py-4 border-b border-[#0e0f0c]/5 dark:border-white/5 bg-[#e8ebe6]/40 dark:bg-black/20">
         <div className="flex gap-2">
-          <div className="size-3.5 rounded-full bg-[#d03238]"></div>
+          <button
+            type="button"
+            aria-label="Close"
+            onClick={(e) => {
+              e.stopPropagation();
+              onClose?.();
+            }}
+            className="size-3.5 rounded-full bg-[#d03238] cursor-pointer transition-transform hover:scale-110 active:scale-95"
+          />
           <div className="size-3.5 rounded-full bg-[#ffd11a]"></div>
           <div className="size-3.5 rounded-full bg-[#2ead4b]"></div>
         </div>
         <div className="text-[12px] font-bold text-[#868685] uppercase tracking-widest ml-2">Console</div>
       </div>
-      
-      <div 
+
+      <div
         ref={scrollContainerRef}
         className="flex-1 overflow-y-auto p-4 sm:p-6 scrollbar-thin scrollbar-thumb-[#0e0f0c]/10 dark:scrollbar-thumb-white/10"
       >
@@ -189,6 +202,7 @@ const CleanDevCard = () => {
             value={input}
             onChange={(e) => setInput(e.target.value)}
             onKeyDown={handleKeyDown}
+            onFocus={onInputFocus}
             className="flex-1 bg-transparent text-[#0e0f0c] dark:text-white focus:outline-none placeholder:text-[#868685]"
             spellCheck={false}
             autoComplete="off"
@@ -202,6 +216,18 @@ const CleanDevCard = () => {
 
 export const HeroSection = () => {
   const router = useRouter();
+  const [devCardFocused, setDevCardFocused] = useState(false);
+
+  // Lock page scroll while the console is centered.
+  useEffect(() => {
+    if (!devCardFocused) return;
+    const original = document.body.style.overflow;
+    document.body.style.overflow = "hidden";
+    return () => {
+      document.body.style.overflow = original;
+    };
+  }, [devCardFocused]);
+
   return (
     <section
       id="hero"
@@ -211,7 +237,7 @@ export const HeroSection = () => {
         <div className="mx-auto grid w-full max-w-7xl items-center gap-16 lg:grid-cols-[1.15fr_0.85fr]">
           <div className="text-center lg:text-left flex flex-col justify-center">
             
-            <FadeIn y={40} delay={0.1}>
+            <FadeIn y={18} delay={0.08}>
               <h1 className="text-6xl sm:text-7xl md:text-[100px] lg:text-[120px] font-black leading-[0.85] tracking-tight mb-8 text-[#0e0f0c] dark:text-white font-sans">
                 Hi, I’m{" "}
                 <span className="accent-text">
@@ -220,14 +246,14 @@ export const HeroSection = () => {
               </h1>
             </FadeIn>
 
-            <FadeIn y={30} delay={0.22}>
+            <FadeIn y={14} delay={0.18}>
               <p className="text-xl sm:text-2xl text-[#454745] dark:text-[#868685] font-medium max-w-2xl mx-auto lg:mx-0 mb-10 leading-relaxed tracking-tight">
                I build digital experiences that don't just work, they resonate. From lightning-fast interfaces to battle-tested backend systems, I create products that are elegant, scalable, and impossible to ignore.    </p>
             </FadeIn>
 
             <FadeIn
-              y={18}
-              delay={0.32}
+              y={8}
+              delay={0.26}
               className="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-4 sm:gap-5 flex-wrap"
             >
               <a href="mailto:rudrapanda8206@gmail.com" className="w-full sm:w-auto">
@@ -252,9 +278,48 @@ export const HeroSection = () => {
 
           </div>
 
-          <FadeIn  y={25} delay={0.28} className="w-full hidden md:flex justify-center lg:justify-end ">
-            <CleanDevCard />
+          <FadeIn  y={12} delay={0.22} className="w-full hidden md:flex justify-center lg:justify-end ">
+            {/* Centering happens via flexbox on this wrapper, not a manual transform —
+                Framer Motion's `layout` prop owns `transform` for its own FLIP
+                animation, so a hand-set translate would just get overwritten. */}
+            <div
+              className={
+                devCardFocused
+                  ? "fixed inset-0 z-100 flex items-center justify-center pointer-events-none"
+                  : "contents"
+              }
+            >
+              <motion.div
+                layout
+                transition={{ layout: { type: "spring", stiffness: 300, damping: 32 } }}
+                className={
+                  devCardFocused
+                    ? "w-[min(95vw,72rem)] h-[min(85vh,800px)] pointer-events-auto"
+                    : "w-full max-w-lg lg:ml-auto h-100"
+                }
+              >
+                <CleanDevCard
+                  expanded={devCardFocused}
+                  onInputFocus={() => setDevCardFocused(true)}
+                  onClose={() => setDevCardFocused(false)}
+                />
+              </motion.div>
+            </div>
           </FadeIn>
+
+          <AnimatePresence>
+            {devCardFocused && (
+              <motion.div
+                aria-hidden
+                onClick={() => setDevCardFocused(false)}
+                className="fixed inset-0 z-90 bg-black/60 cursor-pointer"
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                exit={{ opacity: 0 }}
+                transition={{ duration: 0.25 }}
+              />
+            )}
+          </AnimatePresence>
         </div>
       </div>
     </section>

@@ -1,6 +1,6 @@
 "use client";
 
-import React, { createContext, useContext, useEffect, useState } from "react";
+import React, { createContext, useContext, useEffect, useMemo, useState } from "react";
 import { getSessionPalette, type AccentPalette, ACCENT_PALETTES } from "@/lib/accent-palettes";
 
 interface AccentContextValue {
@@ -18,8 +18,12 @@ export function AccentProvider({ children }: { children: React.ReactNode }) {
     setPalette(getSessionPalette());
   }, []);
 
+  // Memoize so the context object reference only changes when palette changes,
+  // preventing unnecessary re-renders in all consumers.
+  const contextValue = useMemo(() => ({ palette }), [palette]);
+
   return (
-    <AccentContext.Provider value={{ palette }}>
+    <AccentContext.Provider value={contextValue}>
       {children}
     </AccentContext.Provider>
   );

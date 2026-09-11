@@ -161,8 +161,12 @@ export const DottedGlowBackground = ({
 
     const dpr = Math.max(1, window.devicePixelRatio || 1);
 
+    // Cached layout size — read once per resize, never inside the per-frame draw loop.
+    let size = { width: 0, height: 0 };
+
     const resize = () => {
       const { width, height } = container.getBoundingClientRect();
+      size = { width, height };
       el.width = Math.max(1, Math.floor(width * dpr));
       el.height = Math.max(1, Math.floor(height * dpr));
       el.style.width = `${Math.floor(width)}px`;
@@ -179,7 +183,7 @@ export const DottedGlowBackground = ({
 
     const regenDots = () => {
       dots = [];
-      const { width, height } = container.getBoundingClientRect();
+      const { width, height } = size;
       const cols = Math.ceil(width / gap) + 2;
       const rows = Math.ceil(height / gap) + 2;
       const min = Math.min(speedMin, speedMax);
@@ -197,22 +201,46 @@ export const DottedGlowBackground = ({
       }
     };
 
-    const regenThrottled = () => {
-      regenDots();
-    };
-
     regenDots();
 
+    // Pre-render the glow halo once as a small offscreen sprite — blitting an
+    // image is far cheaper per-frame than recomputing ctx.shadowBlur per dot,
+    // which forces an uncached blur rasterization on every draw call.
+    let glowSprite: HTMLCanvasElement | null = null;
+    const glowSize = Math.max(1, Math.ceil(radius * 8 * dpr));
+    const buildGlowSprite = () => {
+      const sprite = document.createElement("canvas");
+      sprite.width = glowSize;
+      sprite.height = glowSize;
+      const sctx = sprite.getContext("2d");
+      if (!sctx) return null;
+      const r = glowSize / 2;
+      const grad = sctx.createRadialGradient(r, r, 0, r, r, r);
+      grad.addColorStop(0, resolvedGlowColor);
+      grad.addColorStop(1, "rgba(0,0,0,0)");
+      sctx.fillStyle = grad;
+      sctx.fillRect(0, 0, glowSize, glowSize);
+      return sprite;
+    };
+    glowSprite = buildGlowSprite();
+
     let last = performance.now();
+    const frameInterval = 1000 / 30; // ambient shimmer doesn't need 60fps
+    let acc = 0;
 
     const draw = (now: number) => {
       if (stopped) return;
-      const dt = (now - last) / 1000; // seconds
+      raf = requestAnimationFrame(draw);
+
+      const dt = now - last;
       last = now;
-      const { width, height } = container.getBoundingClientRect();
+      acc += dt;
+      if (acc < frameInterval) return;
+      acc = 0;
+
+      const { width, height } = size;
 
       ctx.clearRect(0, 0, el.width, el.height);
-      ctx.globalAlpha = opacity;
 
       // optional subtle background fade for depth (defaults to 0 = transparent)
       if (backgroundOpacity > 0) {
@@ -238,6 +266,7 @@ export const DottedGlowBackground = ({
       ctx.fillStyle = resolvedColor;
 
       const time = (now / 1000) * Math.max(speedScale, 0);
+      const half = glowSize / (2 * dpr);
       for (let i = 0; i < dots.length; i++) {
         const d = dots[i];
         // Linear triangle wave 0..1..0 for linear glow/dim
@@ -245,14 +274,11 @@ export const DottedGlowBackground = ({
         const lin = mod < 1 ? mod : 2 - mod; // 0..1..0
         const a = 0.25 + 0.55 * lin; // 0.25..0.8 linearly
 
-        // draw glow when bright
-        if (a > 0.6) {
+        // draw glow halo (cheap sprite blit) when bright, instead of shadowBlur
+        if (a > 0.6 && glowSprite) {
           const glow = (a - 0.6) / 0.4; // 0..1
-          ctx.shadowColor = resolvedGlowColor;
-          ctx.shadowBlur = 6 * glow;
-        } else {
-          ctx.shadowColor = "transparent";
-          ctx.shadowBlur = 0;
+          ctx.globalAlpha = glow * opacity;
+          ctx.drawImage(glowSprite, d.x - half, d.y - half, half * 2, half * 2);
         }
 
         ctx.globalAlpha = a * opacity;
@@ -261,22 +287,34 @@ export const DottedGlowBackground = ({
         ctx.fill();
       }
       ctx.restore();
-
-      raf = requestAnimationFrame(draw);
     };
 
     const handleResize = () => {
       resize();
-      regenThrottled();
+      regenDots();
+    };
+
+    const handleVisibility = () => {
+      if (document.visibilityState === "visible") {
+        if (!raf) {
+          last = performance.now();
+          raf = requestAnimationFrame(draw);
+        }
+      } else if (raf) {
+        cancelAnimationFrame(raf);
+        raf = 0;
+      }
     };
 
     window.addEventListener("resize", handleResize);
+    document.addEventListener("visibilitychange", handleVisibility);
     raf = requestAnimationFrame(draw);
 
     return () => {
       stopped = true;
       cancelAnimationFrame(raf);
       window.removeEventListener("resize", handleResize);
+      document.removeEventListener("visibilitychange", handleVisibility);
       ro.disconnect();
     };
   }, [

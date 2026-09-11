@@ -41,7 +41,7 @@ export const Header = () => {
       <div className="w-full flex items-center justify-between sm:justify-center px-6 max-w-[1400px] mx-auto">
         
         {/* Desktop Nav */}
-        <nav className="pointer-events-auto hidden lg:flex items-center justify-center gap-8 rounded-[24px] border border-[#0e0f0c]/5 dark:border-white/5 bg-white/70 dark:bg-[#121311]/70 px-8 py-3 backdrop-blur-md shadow-sm">
+        <nav className="pointer-events-auto hidden lg:flex items-center justify-center gap-8 rounded-[24px] border border-[#0e0f0c]/5 dark:border-white/5 bg-[#e8ebe6]/95 dark:bg-[#121311]/95 px-8 py-3 shadow-sm">
           {navLinks.map((link) => (
             <a 
               key={link.id}
@@ -58,7 +58,7 @@ export const Header = () => {
         <div className="pointer-events-auto lg:hidden w-full flex justify-end">
           <button 
             onClick={() => setIsOpen(!isOpen)}
-            className="p-3 rounded-full bg-white/80 dark:bg-[#121311]/80 backdrop-blur-md border border-[#0e0f0c]/10 dark:border-white/10 shadow-sm text-[#0e0f0c] dark:text-white transition-transform hover:scale-105 active:scale-95"
+            className="p-3 rounded-full bg-white/95 dark:bg-[#121311]/95 border border-[#0e0f0c]/10 dark:border-white/10 shadow-sm text-[#0e0f0c] dark:text-white transition-transform hover:scale-105 active:scale-95"
             aria-label="Toggle menu"
           >
             {isOpen ? <X size={20} /> : <Menu size={20} />}
