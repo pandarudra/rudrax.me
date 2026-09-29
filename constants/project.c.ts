@@ -1,6 +1,15 @@
 export const projects = [
   {
     num: "01",
+    category: "Email Client",
+    name: "TrueMail",
+    image: "/files/truemail.png",
+    github: "https://github.com/pandarudra/true-mail",
+    live: "https://true-mail-one.vercel.app/",
+    desc: "Modern email client on your own Resend account and custom domain, with threading, multiple mailboxes, AI summaries and action items, tasks, and a calendar, with credentials encrypted at rest.",
+  },
+  {
+    num: "02",
     category: "Real-time Communication",
     name: "NawaNapam",
     image: "/files/nawanapam.png",
@@ -9,7 +18,7 @@ export const projects = [
     desc: "Real-time, one-to-one communication platform serving 5,000+ registered users, with a Redis-based matchmaking engine (Lua scripting, heartbeat tracking, session persistence) and RBAC/moderation APIs on PostgreSQL and Prisma.",
   },
   {
-    num: "02",
+    num: "03",
     category: "Distributed Job Scheduling",
     name: "Zan",
     image: "/files/zan.png",
@@ -18,7 +27,7 @@ export const projects = [
     desc: "Distributed job-scheduling backend for a decentralized compute marketplace, using Redis and BullMQ for task orchestration and execution tracking, Azure Blob Storage, and an Electron desktop app for machine onboarding.",
   },
   {
-    num: "03",
+    num: "04",
     category: "Full Stack Platform",
     name: "Hostify",
     image: "/files/hostify.png",
@@ -27,7 +36,7 @@ export const projects = [
     desc: "A full-stack static site hosting platform with one-click GitHub deployments and custom subdomains.",
   },
   {
-    num: "04",
+    num: "05",
     category: "Real-time Collab",
     name: "Draw.wine",
     image: "/files/draw-wine.png",
@@ -36,7 +45,7 @@ export const projects = [
     desc: "Real-time collaborative whiteboard with Gemini AI integration, Socket.IO, and Solana wallet auth.",
   },
   {
-    num: "05",
+    num: "06",
     category: "Management System",
     name: "Inventra",
     image: "/files/ims.png",
@@ -46,7 +55,7 @@ export const projects = [
   },
 
   {
-    num: "06",
+    num: "07",
     category: "File Sharing",
     name: "Zipster",
     image: "/files/zipster.png",
@@ -56,12 +65,22 @@ export const projects = [
   },
 
   {
-    num: "07",
+    num: "08",
     category: "Real-time Chat",
     name: "ChitChat",
     image: "/files/chitchat.png",
     github: "https://github.com/pandarudra/chitchat",
     live: "",
     desc: "Real-time chat application built with modern web technologies featuring instant messaging and responsive UI.",
+  },
+
+  {
+    num: "09",
+    category: "Security / CLI",
+    name: "ECRYPTO",
+    image: "/files/ecrypto.png",
+    github: "https://github.com/pandarudra/ecrypto",
+    live: "https://pandarudra.github.io/ecrypto/",
+    desc: "Go tool that encrypts folders into a single tamper-proof .ecrypt container using XChaCha20-Poly1305 and Argon2id, with passphrase or key-file modes and tunable security parameters.",
   },
 ];

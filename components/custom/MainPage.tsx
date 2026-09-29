@@ -25,6 +25,10 @@ const ProjectsSection = dynamic(
   () => import("./sections/ProjectsSection").then((m) => ({ default: m.ProjectsSection })),
   { ssr: false }
 );
+const OthersSection = dynamic(
+  () => import("./sections/OthersSection").then((m) => ({ default: m.OthersSection })),
+  { ssr: false }
+);
 const GithubSection = dynamic(
   () => import("./sections/GithubSection").then((m) => ({ default: m.GithubSection })),
   { ssr: false }
@@ -48,6 +52,7 @@ const MainPage = () => {
       <ExperienceSection />
       <SkillsLeetCodeSection />
       <ProjectsSection />
+      <OthersSection />
       <GithubSection />
       <CertificatesSection />
       <Footer />

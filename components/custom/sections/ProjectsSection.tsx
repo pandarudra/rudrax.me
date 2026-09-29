@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import { motion, AnimatePresence } from "motion/react";
-import { ExternalLink, Github, FileCode, ImageOff } from "lucide-react";
+import { ExternalLink, Github, FileCode, ImageOff, ChevronDown } from "lucide-react";
 import { FadeIn } from "../ui/FadeIn";
 import { projects } from "@/constants";
 
@@ -37,8 +37,29 @@ export const ProjectsSection = () => {
             </div>
 
             <div className="grid grid-cols-1 md:grid-cols-[240px_1fr]">
-              {/* file list */}
-              <div className="border-b md:border-b-0 md:border-r border-[#0e0f0c]/10 dark:border-white/10 p-2 flex md:block gap-2 overflow-x-auto md:overflow-visible">
+              {/* mobile: file dropdown */}
+              <div className="md:hidden border-b border-[#0e0f0c]/10 dark:border-white/10 p-2">
+                <label className="relative flex items-center">
+                  <span className="sr-only">Select project</span>
+                  <FileCode className="absolute left-3 size-4 text-white dark:text-[#0e0f0c] opacity-70 pointer-events-none" />
+                  <select
+                    value={active}
+                    onChange={(e) => setActive(Number(e.target.value))}
+                    className="w-full h-11 pl-9 pr-9 rounded-xl appearance-none font-mono text-[13px] bg-[#0e0f0c] text-white dark:bg-white dark:text-[#0e0f0c] focus:outline-none focus:ring-2 cursor-pointer"
+                    style={{ "--tw-ring-color": "var(--ap)" } as React.CSSProperties}
+                  >
+                    {projects.map((p, i) => (
+                      <option key={p.name} value={i}>
+                        {slug(p.name)}.tsx
+                      </option>
+                    ))}
+                  </select>
+                  <ChevronDown className="absolute right-3 size-4 text-white dark:text-[#0e0f0c] opacity-70 pointer-events-none" />
+                </label>
+              </div>
+
+              {/* desktop: file list */}
+              <div className="hidden md:block border-r border-[#0e0f0c]/10 dark:border-white/10 p-2">
                 {projects.map((p, i) => (
                   <button
                     key={p.name}
