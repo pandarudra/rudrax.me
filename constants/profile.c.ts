@@ -31,7 +31,8 @@ export const experiences = [
   {
     role: "Full Stack Developer Intern",
     company: "Orbits+",
-    companyUrl: "https://www.linkedin.com/company/orbits-plus/posts/?feedView=all",
+    companyUrl:
+      "https://www.linkedin.com/company/orbits-plus/posts/?feedView=all",
     location: "Cardiff, UK (Remote)",
     date: "Feb 2026 - Present",
     desc: [
@@ -75,28 +76,72 @@ export const services = [
 ];
 
 export const skillCategories = [
-  { title: "Languages", skills: ["C", "C++", "JavaScript", "TypeScript"] },
+  {
+    title: "Languages",
+    skills: ["C++", "JavaScript", "TypeScript", "Python", "C"],
+  },
   {
     title: "Core CS",
-    skills: ["Data Structures", "Algorithms", "OOP", "Operating Systems", "Complexity Analysis"],
+    skills: [
+      "Data Structures",
+      "Algorithms",
+      "OOP",
+      "Operating Systems",
+      "Complexity Analysis",
+    ],
   },
   {
     title: "Backend & Distributed Systems",
-    skills: ["Node.js", "Express.js", "NestJS", "Socket.IO", "WebRTC", "BullMQ"],
+    skills: [
+      "Node.js",
+      "Express.js",
+      "NestJS",
+      "Socket.IO",
+      "WebRTC",
+      "BullMQ",
+    ],
   },
-  { title: "Frontend", skills: ["React.js", "Next.js", "SvelteKit", "React Native", "Tailwind CSS"] },
+  {
+    title: "Frontend",
+    skills: [
+      "React.js",
+      "Next.js",
+      "SvelteKit",
+      "React Native",
+      "Tailwind CSS",
+    ],
+  },
   { title: "Databases", skills: ["PostgreSQL", "MongoDB", "Redis", "Prisma"] },
-  { title: "Cloud & Tools", skills: ["AWS", "Azure", "Docker", "Git", "GitHub", "Linux", "Postman"] },
+  {
+    title: "Cloud & Tools",
+    skills: ["AWS", "Azure", "Docker", "Git", "GitHub", "Linux", "Postman"],
+  },
 ];
 
-export const codingStats: { label: string; highlight?: string; value: string; width: string }[] = [
-  { label: "LeetCode Rating", highlight: "1717", value: "Top 11% Globally", width: "89%" },
+export const codingStats: {
+  label: string;
+  highlight?: string;
+  value: string;
+  width: string;
+}[] = [
+  {
+    label: "LeetCode Rating",
+    highlight: "1717",
+    value: "Top 11% Globally",
+    width: "89%",
+  },
   { label: "CodeChef Starters 175", value: "Rank 606 / 30,523", width: "98%" },
   { label: "HackNITR Hackathon", value: "Top 200 / 3,000", width: "93.3%" },
 ];
 
 export const milestones = [
   { title: "SAP Certified Associate", desc: "Back-End Developer, ABAP Cloud." },
-  { title: "Hacktoberfest Contributor", desc: "Active open-source contributor ('24, '25 editions)." },
-  { title: "Top HackNITR Innovator", desc: "Ranked in the top 200 out of over 3000 competitors." },
+  {
+    title: "Hacktoberfest Contributor",
+    desc: "Active open-source contributor ('24, '25 editions).",
+  },
+  {
+    title: "Top HackNITR Innovator",
+    desc: "Ranked in the top 200 out of over 3000 competitors.",
+  },
 ];
