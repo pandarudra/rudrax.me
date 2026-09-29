@@ -1,24 +1,8 @@
 "use client";
 
 import { FadeIn } from "../ui/FadeIn";
+import { services } from "@/constants";
 
-const services = [
-  {
-    num: "01",
-    title: "Frontend Engineering",
-    desc: "Building highly performant, reactive user interfaces with React, Next.js, and SvelteKit. Focused on scalable architectures and smooth UX."
-  },
-  {
-    num: "02",
-    title: "Backend Architecture",
-    desc: "Designing robust, scalable APIs and microservices using Node.js, Express, and NestJS, with real-time capabilities via Socket.IO."
-  },
-  {
-    num: "03",
-    title: "Cloud & DevOps",
-    desc: "Configuring and managing deployments on AWS and Azure, Dockerizing applications, and implementing CI/CD pipelines."
-  },
-];
 
 export const ServicesSection = () => {
   return (

@@ -2,35 +2,8 @@
 
 import { FadeIn } from "../ui/FadeIn";
 import { Terminal } from "lucide-react";
+import { experiences } from "@/constants";
 
-const experiences = [
-  {
-    role: "Full Stack Developer Intern",
-    company: "Orbits+",
-    companyUrl: "https://www.linkedin.com/company/orbits-plus/posts/?feedView=all",
-    location: "Cardiff, UK (Remote)",
-    date: "Feb 2026 - Present",
-    desc: [
-      "Designed scalable component architectures and state-management solutions across 20+ reusable components, reducing UI defects by 20% and improving development velocity.",
-      "Architected high-performance interfaces in SvelteKit, cutting bundle size by 25% and improving page-load speed by 15% through compile-time optimization.",
-      "Integrated frontend applications with 15+ backend APIs, reducing response latency by 30% and improving real-time data synchronization across distributed user workflows."
-    ],
-    tech: ["SvelteKit", "TypeScript", "Docker", "Azure"]
-  },
-  {
-    role: "Full Stack Developer Intern",
-    company: "GoMind AI LLC",
-    companyUrl: "https://www.linkedin.com/company/aigomind/posts/?feedView=all",
-    location: "Austin, Texas (Remote)",
-    date: "Oct 2025 – Dec 2025",
-    desc: [
-      "Optimized backend services with NestJS and PostgreSQL, improving API performance and cutting average response times by 35%.",
-      "Managed AWS deployment workflows and CI/CD pipelines, improving release reliability and reducing deployment time by 40%.",
-      "Led frontend development in React Native, delivering 10+ production features across MVP and post-MVP releases."
-    ],
-    tech: ["React Native", "NestJS", "PostgreSQL", "AWS"]
-  }
-];
 
 export const ExperienceSection = () => {
   return (

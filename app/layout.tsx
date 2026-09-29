@@ -8,6 +8,7 @@ import { HeaderConditional } from "@/components/custom/HeaderConditional";
 import { Toaster } from "@/components/ui/sonner";
 import { ThemeColor } from "@/components/custom/ThemeColor";
 import { AccentProvider } from "@/components/custom/AccentProvider";
+import { SITE_URL } from "@/constants";
 
 
 const geistSans = Geist({
@@ -26,7 +27,11 @@ const lf = localFont({
 })
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://rudrax.me"),
+  metadataBase: new URL(SITE_URL),
+  alternates: {
+    canonical: "/",
+    types: { "text/plain": [{ url: "/llms.txt", title: "LLM-readable profile" }] },
+  },
   title: "< rudra >",
   description: "Rudra | Software Developer | Cyber Security Enthusiast | ML Enthusiast | Open-Source Contributor",
   other:{

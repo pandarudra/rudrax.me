@@ -98,7 +98,7 @@ export const ProjectsSection = () => {
                       {project.image ? (
                         <img
                           src={project.image}
-                          alt={project.name}
+                          alt={`Screenshot of ${project.name}`}
                           className="w-full h-full object-cover"
                         />
                       ) : (

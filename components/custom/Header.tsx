@@ -69,7 +69,8 @@ export const Header = () => {
           <button
             onClick={() => setIsOpen(!isOpen)}
             className="p-3 rounded-full bg-white/95 dark:bg-[#121311]/95 border border-[#0e0f0c]/10 dark:border-white/10 shadow-sm text-[#0e0f0c] dark:text-white transition-transform hover:scale-105 active:scale-95"
-            aria-label="Toggle menu"
+            aria-label={isOpen ? "Close menu" : "Open menu"}
+            aria-expanded={isOpen}
           >
             {isOpen ? <X size={20} /> : <Menu size={20} />}
           </button>

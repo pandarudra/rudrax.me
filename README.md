@@ -8,11 +8,6 @@ Hi! I'm **Rudra** (`pandarudra`), a passionate Software Developer and Open Sourc
 
 This repository powers my personal portfolio—an interactive, "Wise-inspired" experience built with **Next.js 16**, **Tailwind CSS v4**, and **Framer Motion**. It features:
 - A dynamic, session-based accent color theme system.
-- An interactive `Code Runner` endless runner game.
-- A `Code Duel` rapid-fire tech quiz.
-- A real-time `GitHub DevLog` showcasing my latest commits.
-- A dynamic `Project Estimator` for generating client quotes.
-- A `Tech Chemistry` 2D physics sandbox.
 
 
 

@@ -419,13 +419,14 @@ export const HeroSection = () => {
               delay={0.26}
               className="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-3 sm:gap-5 flex-wrap"
             >
-              <a href="mailto:rudrapanda8206@gmail.com" className="w-full sm:w-auto">
-                <button className="w-full sm:w-auto group inline-flex h-12 sm:h-14 items-center justify-center gap-2 rounded-[24px] accent-bg px-8 text-[15px] sm:text-[16px] font-bold transition-all hover:scale-105 active:scale-95 shadow-lg">
-                  Get In Touch
-                </button>
+              <a
+                href="mailto:rudrapanda8206@gmail.com"
+                className="w-full sm:w-auto group inline-flex h-12 sm:h-14 items-center justify-center gap-2 rounded-[24px] accent-bg px-8 text-[15px] sm:text-[16px] font-bold transition-all hover:scale-105 active:scale-95 shadow-lg"
+              >
+                Get In Touch
               </a>
               <a
-                href="#projects"
+                href="/blog"
                 onClick={(e) => {
                   e.preventDefault();
 

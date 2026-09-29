@@ -3,7 +3,16 @@
 import React, { useEffect, useState } from "react";
 import { FadeIn } from "../ui/FadeIn";
 import { ExternalLink, Code2, BrainCog, Server, Layout, Database, Cloud } from "lucide-react";
-import { leetcode_username } from "@/constants";
+import { leetcode_username, skillCategories } from "@/constants";
+
+const skillIcons: Record<string, React.ReactNode> = {
+  "Languages": <Code2 className="w-4 h-4" />,
+  "Core CS": <BrainCog className="w-4 h-4" />,
+  "Backend & Distributed Systems": <Server className="w-4 h-4" />,
+  "Frontend": <Layout className="w-4 h-4" />,
+  "Databases": <Database className="w-4 h-4" />,
+  "Cloud & Tools": <Cloud className="w-4 h-4" />,
+};
 
 interface LeetCodeData {
   totalSolved: number;
@@ -253,38 +262,6 @@ export const SkillsLeetCodeSection = () => {
     fetchData();
   }, []);
 
-  const skillCategories = [
-    {
-      title: "Languages",
-      icon: <Code2 className="w-4 h-4" />,
-      skills: ["C", "C++", "JavaScript", "TypeScript"]
-    },
-    {
-      title: "Core CS",
-      icon: <BrainCog className="w-4 h-4" />,
-      skills: ["Data Structures", "Algorithms", "OOP", "Operating Systems", "Complexity Analysis"]
-    },
-    {
-      title: "Backend & Distributed Systems",
-      icon: <Server className="w-4 h-4" />,
-      skills: ["Node.js", "Express.js", "NestJS", "Socket.IO", "WebRTC", "BullMQ"]
-    },
-    {
-      title: "Frontend",
-      icon: <Layout className="w-4 h-4" />,
-      skills: ["React.js", "Next.js", "SvelteKit", "React Native", "Tailwind CSS"]
-    },
-    {
-      title: "Databases",
-      icon: <Database className="w-4 h-4" />,
-      skills: ["PostgreSQL", "MongoDB", "Redis", "Prisma"]
-    },
-    {
-      title: "Cloud & Tools",
-      icon: <Cloud className="w-4 h-4" />,
-      skills: ["AWS", "Azure", "Docker", "Git", "GitHub", "Linux", "Postman"]
-    }
-  ];
 
   return (
     <section id="skills" className="py-14 sm:py-32 bg-white dark:bg-[#121311] transition-colors duration-300 relative z-20 border-t border-[#0e0f0c]/5 dark:border-white/5">
@@ -304,7 +281,7 @@ export const SkillsLeetCodeSection = () => {
                 <div className="h-full p-5 sm:p-8 rounded-[24px] bg-[#e8ebe6] dark:bg-[#1a1b19] border border-[#0e0f0c]/5 dark:border-white/5 transition-all hover:border-[#0e0f0c]/10 dark:hover:border-white/10">
                   <div className="flex items-center gap-3 mb-5 sm:mb-8">
                     <div className="p-2 rounded-lg bg-white dark:bg-[#0e0f0c] text-[#454745] dark:text-[#a0a0a0] shadow-sm border border-[#0e0f0c]/5 dark:border-white/5">
-                      {category.icon}
+                      {skillIcons[category.title]}
                     </div>
                     <h3 className="text-[18px] sm:text-[20px] font-bold text-[#0e0f0c] dark:text-white">{category.title}</h3>
                   </div>
